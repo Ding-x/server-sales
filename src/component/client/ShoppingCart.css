@@ -1,0 +1,14 @@
+
+
+.cart-header{
+    height: 150px;
+    background: #3d691f;
+    padding-top: 30px;
+}
+
+.title{
+    text-align: center;
+    font-size: 48px;
+    color: white;
+    font-weight: 600
+}
