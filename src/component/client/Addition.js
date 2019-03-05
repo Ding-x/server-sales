@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
-import "./ShoppingCart.css"
 
 class  Addition extends Component {
   render() {

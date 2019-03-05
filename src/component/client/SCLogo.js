@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./SCLogo.css";
+import "./Style.css";
 
 
 

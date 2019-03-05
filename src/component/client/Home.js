@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
-import {Carousel, Tabs, Tab, Container, Card, Button } from 'react-bootstrap'
+import { Container, Button, ProgressBar} from 'react-bootstrap'
 import ShoppingCartLogo from "./SCLogo"
-import "./Home.css"
+import "./Style.css"
 
 class Home extends Component {
+
+  componentDidMount(){
+    if(this.props.auth.user===null){
+      this.props.history.push(`/Auth`);
+    }
+  }
 
   toAddition (id) {
     this.props.history.push(`/Addition/${id}`);
   }
 
   render() {
+
     return (
       <div>
            <ShoppingCartLogo history={this.props.history}/>
-           <Carousel>
+           {/* <Carousel>
             <Carousel.Item>
               <img
                 className="d-block w-100 carousel-img"
@@ -35,9 +42,9 @@ class Home extends Component {
                 alt="Third slide"
               />
             </Carousel.Item>
-          </Carousel>
+          </Carousel> */}
 
-          <Container className="combo-container">
+          {/* <Container className="combo-container">
             <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
               <Tab eventKey="home" title="Home">
                 <div className="combo-container">
@@ -75,7 +82,13 @@ class Home extends Component {
             </Tabs>
 
             
+          </Container> */}
+
+          <Container className="root">
+            <p>Hi,{this.props.auth.user===null?null:this.props.auth.user.username}</p>
+            <Button href="#NewOrder/Step1" >New Order</Button>
           </Container>
+
 
       </div>
     );
