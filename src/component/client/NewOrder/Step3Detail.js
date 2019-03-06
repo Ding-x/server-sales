@@ -16,8 +16,15 @@ class Step3Detail extends Component {
 
         this.state={
             project:this.props.cart ? this.props.cart :null,
+            showCombo:true
 
         }
+    }
+
+    toggleShowCombo=()=>{
+        this.setState({
+            showCombo:!this.state.showCombo
+        })
     }
 
     
@@ -35,10 +42,13 @@ class Step3Detail extends Component {
 
             <ProgressBar/>
 
-            <Container fluid className="root">
-
+            <Container  className="root">
+            {
+                this.state.showCombo?
+                <div>
                 <Row className="step2-frame" >
-                    <Col xs="3" className="step4-left">
+                    <h4>Virtual</h4>
+                    <Col >
                         <Card style={{ width: '80%',marginTop:'2rem' }}>
                             <Card.Header>Machine 1</Card.Header>
                             <Card.Body>
@@ -47,9 +57,10 @@ class Step3Detail extends Component {
                                 the card's content.
                                 </Card.Text>
                             </Card.Body>
-                            <Card.Footer ><Button variant="primary">Go Select</Button></Card.Footer>
+                            <Card.Footer ><Button variant="primary" onClick={this.toggleShowCombo}> Select</Button></Card.Footer>
                         </Card>
-
+                    </Col>
+                    <Col>
                         <Card style={{ width: '80%',marginTop:'2rem' }}>
                             <Card.Header>Machine 2</Card.Header>
                             <Card.Body>
@@ -58,28 +69,69 @@ class Step3Detail extends Component {
                                 the card's content.
                                 </Card.Text>
                             </Card.Body>
-                            <Card.Footer ><Button variant="primary">Go Select</Button></Card.Footer>
+                            <Card.Footer ><Button variant="primary" onClick={this.toggleShowCombo}> Select</Button></Card.Footer>
                         </Card>
+                    </Col>
+                    <Col>
 
+                    </Col>
+                   
+                </Row>
+
+                <Row className="step2-frame" >
+                    <h4>Physical</h4>
+                    <Col >
                         <Card style={{ width: '80%',marginTop:'2rem' }}>
-                            <Card.Header>Machine 3</Card.Header>
+                            <Card.Header>Machine 1</Card.Header>
                             <Card.Body>
                                 <Card.Text>
                                 Some quick example text to build on the card title and make up the bulk of
                                 the card's content.
                                 </Card.Text>
                             </Card.Body>
-                            <Card.Footer ><Button variant="primary">Go Select</Button></Card.Footer>
+                            <Card.Footer ><Button variant="primary" onClick={this.toggleShowCombo}> Select</Button></Card.Footer>
                         </Card>
-
-
                     </Col>
                     <Col>
-                    c
+                        <Card style={{ width: '80%',marginTop:'2rem' }}>
+                            <Card.Header>Machine 2</Card.Header>
+                            <Card.Body>
+                                <Card.Text>
+                                Some quick example text to build on the card title and make up the bulk of
+                                the card's content.
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Footer ><Button variant="primary" onClick={this.toggleShowCombo}> Select</Button></Card.Footer>
+                        </Card>
                     </Col>
-                </Row>
-   
+                    <Col>
 
+                    </Col>
+                   
+                </Row>
+                </div>
+                :
+                <div>
+                <Row className="step2-frame" >
+                    <h4>Additional Resources </h4>
+                    <Button variant="primary" onClick={this.toggleShowCombo}> Reselct Combo</Button>
+                   
+                </Row>
+                <Row>
+                    <Form>
+                        {['checkbox', 'radio'].map(type => (
+                            <div key={`inline-${type}`} className="mb-3">
+                            <Form.Check inline label="1" type={type} id={`inline-${type}-1`} />
+                            <Form.Check inline label="2" type={type} id={`inline-${type}-2`} />
+                            <Form.Check inline label="3 " type={type} id={`inline-${type}-3`}
+                            />
+                            </div>
+                        ))}
+                    </Form>
+                </Row>
+                </div>
+            }
+                
 
                 <Form className="form-frame">
                     <Form.Row>

@@ -80,7 +80,7 @@ class Step3 extends Component {
                             <Button size="lg" href="#NewOrder/Step2">Back</Button>
                         </Form.Group>
                         <Form.Group className="text-center" as={Col} controlId="formGridState" >
-                            <Button size="lg" href="#NewOrder/Step3">Next</Button>
+                            <Button size="lg" href="#NewOrder/Step4">Next</Button>
                         </Form.Group>
                     </Form.Row>
                 </Form>

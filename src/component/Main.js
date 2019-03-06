@@ -10,6 +10,7 @@ import Step2 from "./client/NewOrder/Step2"
 import Step2Detail from "./client/NewOrder/Step2Detail"
 import Step3 from "./client/NewOrder/Step3"
 import Step3Detail from "./client/NewOrder/Step3Detail"
+import Step4 from "./client/NewOrder/Step4"
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -95,6 +96,8 @@ class Main extends Component {
           <Route exact path='/NewOrder/Step3' component={()=> <Step3 cart={this.props.cart.cart} updateCart={this.props.updateCart} history={this.props.history} />} />
 
           <Route path='/NewOrder/Step3/:id' component={editServerWithID} />
+
+          <Route exact path='/NewOrder/Step4' component={()=> <Step4 cart={this.props.cart.cart} updateCart={this.props.updateCart} history={this.props.history} />} />
 
           <Redirect to="Home" />
         </Switch>
