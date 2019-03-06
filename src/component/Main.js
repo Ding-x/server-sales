@@ -12,6 +12,8 @@ import Step3 from "./client/NewOrder/Step3"
 import Step3Detail from "./client/NewOrder/Step3Detail"
 import Step4 from "./client/NewOrder/Step4"
 
+import NotFound from "./NotFound"
+
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import {fetchProducts,loginUser, logoutUser, updateCart} from '../redux/ActionCreators';
@@ -75,9 +77,12 @@ class Main extends Component {
           productindex={index[0]}
           serverindex={index[1]} 
           updateCart={this.props.updateCart}
+          data={this.props.products.products}
           />
       );
     };
+
+    console.log(this.props)
 
     return (
       <div >
@@ -97,9 +102,10 @@ class Main extends Component {
 
           <Route path='/NewOrder/Step3/:id' component={editServerWithID} />
 
-          <Route exact path='/NewOrder/Step4' component={()=> <Step4 cart={this.props.cart.cart} updateCart={this.props.updateCart} history={this.props.history} />} />
+          <Route exact path='/NewOrder/Step4' component={()=> <Step4 cart={this.props.cart.cart} updateCart={this.props.updateCart} history={this.props.history}  />} />
 
-          <Redirect to="Home" />
+          <Route exact path='/NotFound'  component={NotFound} />
+          <Redirect to="/NotFound" />
         </Switch>
         <Footer />
       </div>

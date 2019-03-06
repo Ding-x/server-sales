@@ -1,10 +1,10 @@
 import * as ActionTypes from './ActionTypes';
-import Products from '../data/data';
+import comboList from '../data/data';
 import User from '../data/user';
 
 export const fetchProducts = () => (dispatch) => {
     dispatch(productsLoading(true));
-    dispatch(addProducts(Products));
+    dispatch(addProducts(comboList));
 
 }
 

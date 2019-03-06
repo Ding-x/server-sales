@@ -168,7 +168,7 @@ class Step2Detail extends Component {
                     <Form.Row>
                         
                         <Form.Group className="text-center" as={Col} controlId="formGridState1" >
-                            <Button size="lg" href="#NewOrder/Step2">Back</Button>
+                            <Button size="lg" href="#NewOrder/Step2">Cancel</Button>
                         </Form.Group>
                         <Form.Group className="text-center" as={Col} controlId="formGridState2" >
                             <Button size="lg" href="#NewOrder/Step2" onClick={this.handleStorage}>Save</Button>

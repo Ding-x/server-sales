@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Form, Col, Row, Button, Card} from 'react-bootstrap'
+import { Container, Form, Col, Row, Button, Card, Tabs, Tab} from 'react-bootstrap'
 import ProgressBar from '../ProgressBar'
 
 
@@ -27,6 +27,13 @@ class Step3Detail extends Component {
         })
     }
 
+
+    selectCombo(id){
+        this.setState({
+            showCombo:!this.state.showCombo
+        })
+    }
+
     
 
     render() {
@@ -46,69 +53,39 @@ class Step3Detail extends Component {
             {
                 this.state.showCombo?
                 <div>
-                <Row className="step2-frame" >
-                    <h4>Virtual</h4>
-                    <Col >
-                        <Card style={{ width: '80%',marginTop:'2rem' }}>
-                            <Card.Header>Machine 1</Card.Header>
-                            <Card.Body>
-                                <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer ><Button variant="primary" onClick={this.toggleShowCombo}> Select</Button></Card.Footer>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card style={{ width: '80%',marginTop:'2rem' }}>
-                            <Card.Header>Machine 2</Card.Header>
-                            <Card.Body>
-                                <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer ><Button variant="primary" onClick={this.toggleShowCombo}> Select</Button></Card.Footer>
-                        </Card>
-                    </Col>
-                    <Col>
+                 <Container className="combo-container">
+                    <Tabs defaultActiveKey={this.props.data.type} id="uncontrolled-tab-example">
+                    {this.props.data.map(subComboList => {
+                    return(
+                        <Tab eventKey={subComboList.type} title={subComboList.type} key={subComboList.id}>
+                        <div className="combo-container">
+                            {subComboList.data.map(combo=>{
+                            return(
+                                <Card key={combo.id} className="combo">
+                                <Card.Header>{combo.title}</Card.Header>
+                                    <Card.Body>
+                                        {combo.detail.split("|").map(item=>{
+                                        return(
+                                            <p key={item}>{item}</p>
+                                        )
+                                        }
+                                        )}
+                                    </Card.Body>
+                                <Card.Footer>{combo.price}/Year</Card.Footer>
+                                <Card.Footer><Button variant="primary" onClick={this.selectCombo.bind(this,combo.id)}>Select</Button></Card.Footer>
+                                </Card>
+                            )
+                            })}
+                        </div>
+                        </Tab>
+                    )
+                    })}
+                    </Tabs>
 
-                    </Col>
-                   
-                </Row>
+                    
+                </Container>
 
-                <Row className="step2-frame" >
-                    <h4>Physical</h4>
-                    <Col >
-                        <Card style={{ width: '80%',marginTop:'2rem' }}>
-                            <Card.Header>Machine 1</Card.Header>
-                            <Card.Body>
-                                <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer ><Button variant="primary" onClick={this.toggleShowCombo}> Select</Button></Card.Footer>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card style={{ width: '80%',marginTop:'2rem' }}>
-                            <Card.Header>Machine 2</Card.Header>
-                            <Card.Body>
-                                <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer ><Button variant="primary" onClick={this.toggleShowCombo}> Select</Button></Card.Footer>
-                        </Card>
-                    </Col>
-                    <Col>
-
-                    </Col>
-                   
-                </Row>
+               
                 </div>
                 :
                 <div>
@@ -131,13 +108,14 @@ class Step3Detail extends Component {
                 </Row>
                 </div>
             }
-                
+            </Container>
+            <Container>  
 
                 <Form className="form-frame">
                     <Form.Row>
                         
                         <Form.Group className="text-center" as={Col} controlId="formGridState1" >
-                            <Button size="lg" href="#NewOrder/Step3">Back</Button>
+                            <Button size="lg" href="#NewOrder/Step3">Cancel</Button>
                         </Form.Group>
                         <Form.Group className="text-center" as={Col} controlId="formGridState2" >
                             <Button size="lg" href="#NewOrder/Step3" onClick={this.handleStorage}>Save</Button>
