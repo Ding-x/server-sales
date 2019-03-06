@@ -24,9 +24,8 @@ export const addProducts = (products) => ({
 
 //----------------------------------------------
 export const updateCart = (cart) => (dispatch) => {
-    localStorage.setItem("cart",cart)
-    dispatch(addItems(cart));
-
+    localStorage.setItem('cart',JSON.stringify(cart))
+    dispatch(addItems(cart))
 }
 
 export const addItems = (cart) => ({

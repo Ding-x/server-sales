@@ -8,21 +8,21 @@ class Step1 extends Component {
     constructor(props){
         super(props)
         this.state={
-            projectNum:1,
-            projects:[]
+            projectNum:this.props.cart ? this.props.cart.length : 1,
+            projects:this.props.cart ? this.props.cart : []
         }
     }
 
-    componentDidMount(){
-        this.setState({
-            projectNum:this.props.cart.length,
-            projects:this.props.cart
-        })
-    }
 
     handleSelect=(e)=>{
+
+        var tmp = []
+        for(var i=0; i< e.target.value; i++){
+            tmp[i]=this.state.projects[i]
+        }
         this.setState({
-            projectNum:e.target.value
+            projectNum:e.target.value,
+            projects:tmp
         })
     }
 
@@ -40,11 +40,25 @@ class Step1 extends Component {
 
     
     render() {
-        console.log(this.props)
         var num = this.state.projectNum
         var result = []
-        for(var i=0; i< num; i++){
-            result.push(
+        var i
+
+        if(this.state.projects.length>0){
+            for(i=0; i< num; i++){
+                result.push(
+                    <Form.Group as={Row} controlId={i} key={i}>
+                        <Form.Label column sm="1">Project {i+1}</Form.Label>
+                        <Col sm="11">
+                            <Form.Control placeholder="Project name" defaultValue={this.state.projects[i]?this.state.projects[i].name:""}/>
+                        </Col>
+                    </Form.Group>
+                )
+            }
+        }
+        else{
+            for(i=0; i< num; i++){
+                result.push(
                     <Form.Group as={Row} controlId={i} key={i}>
                         <Form.Label column sm="1">Project {i+1}</Form.Label>
                         <Col sm="11">
@@ -52,6 +66,7 @@ class Step1 extends Component {
                         </Col>
                     </Form.Group>
                 )
+            }
         }
 
         return (
@@ -67,24 +82,16 @@ class Step1 extends Component {
             <Container className="root">
                 <Form className="form-frame">
                     <Form.Row>
-                    
-
                         <Form.Group as={Col} controlId="formGridState" onChange={this.handleSelect}>
                         <Form.Label>How many projects you will have?</Form.Label>
-                        <Form.Control as="select">
+                        <Form.Control as="select" defaultValue={this.state.projectNum}>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
                             <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
                         </Form.Control>
                         </Form.Group>
-
                     </Form.Row>
 
             

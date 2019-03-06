@@ -7,7 +7,7 @@ import "../Style.css"
 
 
 
-class Step2 extends Component {
+class Step3 extends Component {
 
     constructor(props){
         super(props)
@@ -39,35 +39,38 @@ class Step2 extends Component {
         <div>
             <Container fluid>
                 <Row className="step-header">
-                    <Col className='title' > Step 2</Col>
+                    <Col className='title' > Step 3</Col>
                 </Row>   
             </Container>
 
             <ProgressBar/>
 
             <Container fluid className="root">
-                <Row className="step2-frame">
-                    {this.state.projects.map((project,index)=>{
+                
+                    {this.state.projects.map((project,projectindex)=>{
                         return(
-                            <Col onClick={this.handleJump.bind(this,index)} className="step2-project-box" key={index} id={index}>
-                                
-                                    <h4  className="step2-title">Project {index+1}: {project.name}</h4>
+                            <Row className="step2-frame" key={projectindex} id={projectindex}>
+                                <Col >
+                                    <h4  className="step2-title">Project {projectindex+1}: {project.name}</h4>
 
-                                    {project.servers? <p>You will have {project.servers.length} servers</p> : null}
-                                    {project.servers? project.servers.map((server, index)=>{
+                                    <Row>
+                                    {project.servers? project.servers.map((server, serverIndex)=>{
                                         return (
-                                            <div key={index}>{server.name},{server.type}</div>
+                                            <Col xs="2" onClick={this.handleJump.bind(this,serverIndex)} className="step2-project-box" key={serverIndex}>
+                                            <p>Server Name: {server.name}</p>
+                                            <p>Server Type: {server.type}</p>
+                                            </Col>
                                         )
                                     })
                                 :
                                 null}
-                                
+                                </Row>
 
-                            </Col>
-    
+                                </Col>
+                            </Row>
                         )
                     })}
-                </Row>
+                
 
 
                 <Form className="form-frame">
@@ -87,4 +90,4 @@ class Step2 extends Component {
     }
 }
 
-export default Step2;
+export default Step3;

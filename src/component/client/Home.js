@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Button, ProgressBar} from 'react-bootstrap'
+import { Container, Button} from 'react-bootstrap'
 import ShoppingCartLogo from "./SCLogo"
 import "./Style.css"
 

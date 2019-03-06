@@ -35,7 +35,7 @@
 
 .root{
     justify-content: center; 
-    height: 700px;
+    min-height: 700px;
     width: 100%;
     padding-top: 100px;
 }
@@ -78,6 +78,39 @@ footer{
     padding-bottom: 30px;
     margin-bottom: 40px;
     border-bottom: 1px dashed #eee;
+}
+
+.step2-frame{
+    padding: 30px 60px;
+    margin-bottom: 40px;
+    border: 1px dashed #eee;
+
+
+}
+
+.step2-title{
+    text-align: center;
+    color:#666
+
+}
+
+.step2-frame-right{
+    border-left: 1px dashed #eee;
+}
+
+.step2-project-box{
+    border: 1px solid #eee;
+    margin: 30px;
+    padding: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+
+
+.step2-project-box:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
 }
 
 

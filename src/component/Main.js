@@ -7,6 +7,8 @@ import Addition from "./client/Addition"
 import Auth from "./client/Auth"
 import Step1 from "./client/NewOrder/Step1"
 import Step2 from "./client/NewOrder/Step2"
+import Step2Detail from "./client/NewOrder/Step2Detail"
+import Step3 from "./client/NewOrder/Step3"
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -44,17 +46,35 @@ class Main extends Component {
       );
     };
 
+    const editProjectWithID = ({match}) => {
+
+      var cart = this.props.cart.cart[match.params.id];
+
+      return(
+          <Step2Detail  
+          cart={cart} 
+          products={this.props.cart.cart} 
+          index={match.params.id} 
+          updateCart={this.props.updateCart}
+          />
+      );
+    };
+
     return (
       <div >
         <Header auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser} history={this.props.history}/>
         <Switch history={this.props.history}>
-          <Route path='/Home' component={()=><Home auth={this.props.auth} history={this.props.history}  />} />
-          <Route path='/Auth' component={()=><Auth auth={this.props.auth} loginUser={this.props.loginUser} history={this.props.history}/>}  />
+          <Route exact path='/Home' component={()=><Home auth={this.props.auth} history={this.props.history}  />} />
+          <Route exact path='/Auth' component={()=><Auth auth={this.props.auth} loginUser={this.props.loginUser} history={this.props.history}/>}  />
           <Route exact path='/ShoppingCart'  component={ShoppingCart} />
           <Route path='/Addition/:id' component={additionWihID} />
 
-          <Route path='/NewOrder/Step1' component={()=> <Step1 cart={this.props.cart} updateCart={this.props.updateCart} />} />
-          <Route path='/NewOrder/Step2' component={()=> <Step2 cart={this.props.cart} updateCart={this.props.updateCart} />} />
+          <Route exact path='/NewOrder/Step1' component={()=> <Step1 cart={this.props.cart.cart} updateCart={this.props.updateCart} />} />
+          <Route exact path='/NewOrder/Step2' component={()=> <Step2 cart={this.props.cart.cart} updateCart={this.props.updateCart} history={this.props.history} />} />
+
+          <Route path='/NewOrder/Step2/:id' component={editProjectWithID} />
+
+          <Route exact path='/NewOrder/Step3' component={()=> <Step3 cart={this.props.cart.cart} updateCart={this.props.updateCart} history={this.props.history} />} />
 
           <Redirect to="Home" />
         </Switch>
