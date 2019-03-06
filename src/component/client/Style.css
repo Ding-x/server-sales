@@ -115,3 +115,13 @@ footer{
 
 
 
+.step4-left{
+    min-height: 800px;
+    width: 100%;
+    background: #eee;
+    padding-top: 30px;
+    padding-left: 5%;
+    padding-bottom: 50px;
+}
+
+

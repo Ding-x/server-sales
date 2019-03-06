@@ -91,6 +91,7 @@ class Step2Detail extends Component {
                                 </Form.Control>
                             </Form.Group>                       
                         </Col>
+                        
                     </Row>
                 )
             }

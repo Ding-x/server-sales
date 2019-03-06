@@ -29,7 +29,8 @@ class Step3 extends Component {
 
 
     handleJump(index){
-        this.props.history.push(`/NewOrder/Step2/`+index)
+        console.log(index)
+        this.props.history.push(`/NewOrder/Step3/`+index)
     }
 
     render() {
@@ -56,7 +57,7 @@ class Step3 extends Component {
                                     <Row>
                                     {project.servers? project.servers.map((server, serverIndex)=>{
                                         return (
-                                            <Col xs="2" onClick={this.handleJump.bind(this,serverIndex)} className="step2-project-box" key={serverIndex}>
+                                            <Col xs="2" onClick={this.handleJump.bind(this,projectindex+"&"+serverIndex)} className="step2-project-box" key={serverIndex}>
                                             <p>Server Name: {server.name}</p>
                                             <p>Server Type: {server.type}</p>
                                             </Col>
@@ -76,7 +77,7 @@ class Step3 extends Component {
                 <Form className="form-frame">
                     <Form.Row>
                          <Form.Group className="text-center" as={Col} controlId="formGridState1" >
-                            <Button size="lg" href="#NewOrder/Step1">Back</Button>
+                            <Button size="lg" href="#NewOrder/Step2">Back</Button>
                         </Form.Group>
                         <Form.Group className="text-center" as={Col} controlId="formGridState" >
                             <Button size="lg" href="#NewOrder/Step3">Next</Button>
