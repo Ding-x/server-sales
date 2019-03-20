@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Button} from 'react-bootstrap'
-import ShoppingCartLogo from "./SCLogo"
-import "./Style.css"
+import { Container, Button, Tabs, Tab, Card} from 'react-bootstrap'
+import  "./Home.css"
+import SCLogo from "./SCLogo"
 
 class Home extends Component {
 
@@ -11,85 +11,57 @@ class Home extends Component {
     }
   }
 
-  toAddition (id) {
-    this.props.history.push(`/Addition/${id}`);
-  }
 
   render() {
 
     return (
       <div>
-           <ShoppingCartLogo history={this.props.history}/>
-           {/* <Carousel>
-            <Carousel.Item>
-              <img
-                className="d-block w-100 carousel-img"
-                src="https://www.builtinboston.com/sites/www.builtinboston.com/files/inline-images/shutterstock_300344546_0.jpg"
-                alt="First slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100 carousel-img"
-                src="https://www.itgeekrambling.co.uk/wp-content/uploads/2016/11/WindowsServer2016Background.jpg"
-                alt="Third slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100 carousel-img"
-                src="http://ubuntuvps.net/wp-content/uploads/2015/06/ubuntu-wallpapers-18.png"
-                alt="Third slide"
-              />
-            </Carousel.Item>
-          </Carousel> */}
+          <Container fluid className="root">
+            <SCLogo/>
+            <div className="header-title">
+              <div >Hi, {this.props.auth.user===null?null:this.props.auth.user.username}</div>
+              <div>Here is our services</div>
+              <Button className="request-btn" variant="success" href="#Services" >Request Now</Button>
+            </div>
 
-          {/* <Container className="combo-container">
-            <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
-              <Tab eventKey="home" title="Home">
-                <div className="combo-container">
+         
+            <div className="content">
+              <Container >
+                <Tabs className="justify-content-center" defaultActiveKey={this.props.data.type} id="uncontrolled-tab-example">
+                {this.props.data.map(subComboList => {
+                return(
+                    <Tab  eventKey={subComboList.type} title={subComboList.type} key={subComboList.id}>
+                    <div className="combo-container">
+                        {subComboList.data.map(combo=>{
+                        return(
+                            <Card key={combo.id} className="combo">
+                            <Card.Header>{combo.title}</Card.Header>
+                                <Card.Body>
+                                    {combo.detail.split("|").map(item=>{
+                                    return(
+                                        <p key={item}>{item}</p>
+                                    )
+                                    }
+                                    )}
+                                </Card.Body>
+                            <Card.Footer>{combo.price}/Year</Card.Footer>
+                            <Card.Footer><Button variant="primary" >Detail</Button></Card.Footer>
+                            </Card>
+                        )
+                        })}
+                    </div>
+                    </Tab>
+                )
+                })}
+                </Tabs>
 
-                  <Card className="combo">
-                  <Card.Header>Featured</Card.Header>
-                    <Card.Body>
-                      <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                      </Card.Text>
-                    </Card.Body>
-                    <Card.Footer><Button variant="primary" onClick={this.toAddition.bind(this,2)}>Go somewhere</Button></Card.Footer>
-                  </Card>
+            </Container>
 
-                  <Card  className="combo">
-                  <Card.Header>Featured</Card.Header>
-                    <Card.Body>
-                      <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                      </Card.Text>
-                    </Card.Body>
-                    <Card.Footer><Button variant="primary" onClick={this.toAddition.bind(this,1)}>Go somewhere</Button></Card.Footer>
-                  </Card>
-                </div>
+            </div>
 
-              </Tab>
-              <Tab eventKey="profile" title="Profile">
-                bbbb
-              </Tab>
-              <Tab eventKey="contact" title="Contact">
-                ccc
-              </Tab>
-            </Tabs>
-
+         
             
-          </Container> */}
-
-          <Container className="root">
-            <p>Hi,{this.props.auth.user===null?null:this.props.auth.user.username}</p>
-            <Button href="#NewOrder/Step1" >New Order</Button>
           </Container>
-
-
       </div>
     );
   }

@@ -23,8 +23,8 @@ class Header extends Component {
                                 null
                                 :
                                 <Nav>
-                                    <Nav.Link href="#Dashboard">{this.props.auth.user.username}</Nav.Link>
-                                    <Nav.Link eventKey={2} href="#memes"><Button onClick={this.handleLogout}>Logout</Button> </Nav.Link>
+                                    <Nav.Link href="#Dashboard"><Button variant="info">{this.props.auth.user.username}</Button></Nav.Link>
+                                    <Nav.Link eventKey={2} href="#memes"><Button variant="secondary" onClick={this.handleLogout}>Logout</Button> </Nav.Link>
                                 </Nav>
                             }
                                 

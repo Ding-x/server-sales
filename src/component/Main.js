@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Header from "./client/Header"
 import Footer from "./client/Footer"
 import Home from "./client/Home"
+import Services from "./client/Services"
+
 import ShoppingCart from "./client/ShoppingCart"
 import Addition from "./client/Addition"
 import Auth from "./client/Auth"
@@ -88,7 +90,9 @@ class Main extends Component {
       <div >
         <Header auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser} history={this.props.history}/>
         <Switch history={this.props.history}>
-          <Route exact path='/Home' component={()=><Home auth={this.props.auth} history={this.props.history}  />} />
+        
+          <Route exact path='/Home' component={()=><Home auth={this.props.auth} history={this.props.history} data={this.props.products.products} />} />
+          <Route exact path='/Services' component={()=><Services auth={this.props.auth} history={this.props.history} data={this.props.products.products} />} />
           <Route exact path='/Auth' component={()=><Auth auth={this.props.auth} loginUser={this.props.loginUser} history={this.props.history}/>}  />
           <Route exact path='/ShoppingCart'  component={ShoppingCart} />
           <Route path='/Addition/:id' component={additionWihID} />
