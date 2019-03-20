@@ -6,6 +6,11 @@ import SCLogo from "./SCLogo"
 class Services extends Component {
 
 
+  handleJumpToAddition(id){
+    this.props.history.push('Addition/'+id)
+  }
+
+
   render() {
 
 
@@ -33,7 +38,7 @@ class Services extends Component {
                                     )}
                                 </Card.Body>
                             <Card.Footer>{combo.price}/Year</Card.Footer>
-                            <Card.Footer><Button variant="primary" >Select</Button></Card.Footer>
+                            <Card.Footer><Button variant="primary" onClick={this.handleJumpToAddition.bind(this,combo.id)} >Select</Button></Card.Footer>
                             </Card>
                           </Col>
 

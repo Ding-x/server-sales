@@ -1,0 +1,40 @@
+.addition-header{
+    border-bottom: 1px dotted #ddd;
+    height: 170px;
+    padding-top: 40px;
+}
+
+.addition-header-title{
+    text-align: center;
+    font-size: 36px;
+    font-weight: 600;
+    color: #666
+}
+
+.addition-header-sub-title{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #888;
+    padding-top: 10px;
+}
+
+.addition-content{
+    height: 100px;
+    background: #666;
+}
+
+.addition-form-frame1{
+    width: 50%;
+    margin: 10px auto;
+}
+
+.addition-form-title{
+    margin: 40px auto;
+    font-size: 24px;
+}
+
+.addition-form-frame2{
+    width: 80%;
+    margin: 10px auto;
+}

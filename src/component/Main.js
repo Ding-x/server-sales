@@ -46,8 +46,16 @@ class Main extends Component {
   
   render() {
     const additionWihID = ({match}) => {
+      var product
+      this.props.products.products.map((collection)=>{
+        collection.data.map((combo)=>{
+          if(combo.id===parseInt(match.params.id)){
+            product = combo
+          }
+        })
+      })
       return(
-          <Addition  id={match.params.id}
+          <Addition  combo={product} auth={this.props.auth} history={this.props.history}
           />
       );
     };
