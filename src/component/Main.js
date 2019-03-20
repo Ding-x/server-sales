@@ -105,7 +105,7 @@ class Main extends Component {
           <Route exact path='/NewOrder/Step4' component={()=> <Step4 cart={this.props.cart.cart} updateCart={this.props.updateCart} history={this.props.history}  />} />
 
           <Route exact path='/NotFound'  component={NotFound} />
-          <Redirect to="/NotFound" />
+          <Redirect to="/Home" />
         </Switch>
         <Footer />
       </div>
