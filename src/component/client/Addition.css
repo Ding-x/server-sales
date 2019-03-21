@@ -20,21 +20,55 @@
 }
 
 .addition-content{
-    height: 100px;
-    background: #666;
+    min-height: 600px;
+    height: auto;
+    background: #eee;
+    padding: 100px 50px 100px 30px;
+
 }
 
 .addition-form-frame1{
-    width: 50%;
-    margin: 10px auto;
-}
-
-.addition-form-title{
+    width: 80%;
     margin: 40px auto;
+    padding-top: 40px ;
+    padding-bottom: 40px ;
+    border-bottom: #eee 1px solid;
     font-size: 24px;
 }
 
+
 .addition-form-frame2{
     width: 80%;
-    margin: 10px auto;
+    margin: 20px auto;
+    padding-top: 20px ;
+    padding-bottom: 20px ;
+    font-size: 22px;
+}
+
+.addition-summary{
+    background: #fff;
+    min-height: 600px;
+    width: 100%;
+    padding: 50px;
+}
+
+.addition-btns{
+    width: 100%
+}
+
+.addition-options{
+    background: #fff;
+    min-height: 600px;
+    width: 100%;
+    padding: 50px;
+}
+
+
+.addition-options-title{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: #eee 1px solid;
 }

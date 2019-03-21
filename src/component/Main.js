@@ -45,17 +45,23 @@ class Main extends Component {
   }
   
   render() {
+
+    
     const additionWihID = ({match}) => {
-      var product
+
+      console.log(this.props.products.products)
+      var product, options
       this.props.products.products.map((collection)=>{
         collection.data.map((combo)=>{
           if(combo.id===parseInt(match.params.id)){
             product = combo
+            console.log(collection)
+            options = collection.options
           }
         })
       })
       return(
-          <Addition  combo={product} auth={this.props.auth} history={this.props.history}
+          <Addition  combo={product} options={options} auth={this.props.auth} history={this.props.history}
           />
       );
     };

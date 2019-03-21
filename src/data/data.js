@@ -15,6 +15,36 @@ const comboList = [
                 detail:"Ubuntu 18.04|2GB RAM|20GB OS disk",
                 price:313,
             }
+        ],
+        options:[
+            {
+                id:3,
+                name:"Disk Storage",
+                price:"23.5",
+                unit:"GB",
+                type:"INPUT"
+            },
+            {
+                id:4,
+                name:"Memory",
+                price:"12.8",
+                unit:"GB",
+                type:"INPUT"
+            },
+            {
+                id:5,
+                name:"Service 1",
+                price:"88.5",
+                unit:"ITEM",
+                type:"CHECKBOX"
+            },
+            {
+                id:6,
+                name:"Service 2",
+                price:"134",
+                unit:"ITEM",
+                type:"CHECKBOX"
+            },
         ]
 
     },

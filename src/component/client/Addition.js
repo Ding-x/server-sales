@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Modal, Button, Form } from 'react-bootstrap'
 import "./Addition.css"
+import VMOption from "./VMOption"
 
 class  Addition extends Component {
   
@@ -11,21 +12,25 @@ class  Addition extends Component {
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
-      show: true,
-      serverNum: 1,
-      servers: [{name:"", type:-1}],
+      show: false,
+      serverNum: 2,
+      servers: [{name:"s1", type:"Prod"},{name:"s2", type:"Test"}],
       saveBtn:false,
-      showServerContainer:false
+      showServerContainer:true
     };
   }
 
   handleClose() {
+    
     this.setState({ show: false, showServerContainer:true });
+    this.checkSaveBtn()
   }
 
   handleShow() {
     this.setState({ show: true, showServerContainer:false });
+    this.checkSaveBtn()
   }
+
 
   checkSaveBtn(){
     for(let server of this.state.servers){
@@ -82,61 +87,53 @@ handleInput=(e)=>{
 
 
   render() {
-      console.log(this.state)
-      var result = []
+console.log(this.props)
+    var result = []
       var i
-
-      if(this.state.servers.length>0){
-          for(i=0; i< this.state.serverNum; i++){
-              result.push(
-                  <Row key={i}>
-                      <Col xs={2}> Server {i+1} </Col>
-                      <Col>
-                          <Form.Group  controlId={i*2} >
-                              <Form.Control  placeholder="Server name" defaultValue={this.state.servers[i].name} />
-                          </Form.Group>
-                      </Col>
-                      <Col>
-                          <Form.Group  controlId={i*2+1}>
-                              <Form.Control as="select" defaultValue={this.state.servers[i].type} >
-                                  <option disabled value={-1} key={-1} >Choose server type ...</option>
-                                  <option>Prod</option>
-                                  <option>Dev</option>
-                                  <option>Test</option>
-                                  <option>UAT</option>
-                              </Form.Control>
-                          </Form.Group>                       
-                      </Col>
+      for(i=0; i< this.state.serverNum; i++){
+          result.push(
+              <Row key={i}>
+                  <Col xs={2}> Server {i+1} </Col>
+                  <Col>
+                      <Form.Group  controlId={i*2} >
+                        {this.state.servers.length>0?
+                          <Form.Control  placeholder="Server name" defaultValue={this.state.servers[i].name} />
+                          :
+                          <Form.Control  placeholder="Server name" />
+                          }
+                      </Form.Group>
+                  </Col>
+                  <Col>
+                      <Form.Group  controlId={i*2+1}>
                       
-                  </Row>
-              )
-          }
+                      {this.state.servers.length>0?
+                          <Form.Control as="select" defaultValue={this.state.servers[i].type} >
+
+                              <option disabled value={-1} key={-1} >Choose server type ...</option>
+                              <option value="Prod">Prod</option>
+                              <option value="Dev">Dev</option>
+                              <option value="Test">Test</option>
+                              <option value="UAT">UAT</option>
+                          </Form.Control>
+                          :
+                          <Form.Control as="select" defaultValue="-1" >
+                        
+                          <option disabled value={-1} key={-1} >Choose server type ...</option>
+                          <option>Prod</option>
+                          <option>Dev</option>
+                          <option>Test</option>
+                          <option>UAT</option>
+                      </Form.Control>
+                          }
+
+                      </Form.Group>                       
+                  </Col>
+                  
+              </Row>
+          )
       }
-      else{
-          for(i=0; i< this.state.serverNum; i++){
-              result.push(
-                  <Row key={i}>
-                      <Col xs={2}> Server {i+1} </Col>
-                      <Col>
-                          <Form.Group  controlId={i*2} >
-                              <Form.Control  placeholder="Server name" />
-                          </Form.Group>
-                      </Col>
-                      <Col>
-                          <Form.Group  controlId={i*2+1}>
-                              <Form.Control as="select" defaultValue="-1" >
-                                  <option disabled value={-1} key={-1} >Choose server type ...</option>
-                                  <option>Prod</option>
-                                  <option>Dev</option>
-                                  <option>Test</option>
-                                  <option>UAT</option>
-                              </Form.Control>
-                          </Form.Group>                       
-                      </Col>
-                  </Row>
-              )
-          }
-      }
+      
+      
 
     return (
       <div>
@@ -151,7 +148,7 @@ handleInput=(e)=>{
 
                 <Modal 
                 {...this.props}
-                size="lg"
+                size="xl"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
                 show={this.state.show} 
@@ -159,10 +156,13 @@ handleInput=(e)=>{
                 >
                   <Modal.Body>
                   <Form className="addition-form-frame1">
-                    <Form.Row className="addition-form-title"> How many servers you need? </Form.Row>
-                    <Form.Row>
+                    <Form.Row >
+         
+                    <Form.Group  as={Col} controlId="formGridState" onChange={this.handleSelect}>
+                    <Form.Label>How many servers you need?</Form.Label>
+                        </Form.Group>
                         <Form.Group as={Col} controlId="formGridState" onChange={this.handleSelect}>
-                        <Form.Control as="select" defaultValue={this.state.projectNum}>
+                        <Form.Control as="select" defaultValue={this.state.serverNum}>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -170,7 +170,9 @@ handleInput=(e)=>{
                             <option>5</option>
                         </Form.Control>
                         </Form.Group>
+        
                     </Form.Row>
+
 
             
                 </Form>
@@ -185,19 +187,9 @@ handleInput=(e)=>{
                   </Modal.Footer>
                 </Modal> 
                 
-                {this.state.showServerContainer?
-                <Row className="addition-content">
-                  <Button onClick={this.handleShow}>Reselect Server</Button>
-                  {this.state.servers.map(server=>{
-                    return(
-                      <p>{server.name}</p>
-                    )
-                  })}
-                </Row>
+             
 
-                :
-                null
-                }
+                {this.state.showServerContainer? <VMOption servers={this.state.servers} options={this.props.options} reSelect={this.handleShow} />  : null }
             </Container>
 
       </div>
