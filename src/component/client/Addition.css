@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 .addition-header{
     border-bottom: 1px dotted #ddd;
     height: 170px;

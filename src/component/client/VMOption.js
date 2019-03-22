@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col,Button, ButtonGroup, Form } from 'react-bootstrap'
+import { Slider  } from 'antd';
 import "./Addition.css"
 
 class  VMOption extends Component {
@@ -123,7 +124,7 @@ class  VMOption extends Component {
                       {this.state.currOptions?
                             this.state.currOptions.map((option, index)=>{
                                 console.log(option.value)
-                                if(option.value!="0" && option.value!==false){
+                                if(option.value!="0" && option.value!==false && option.value!=''){
                                     return(
                                         <p>{option.name}</p>
                                     )
