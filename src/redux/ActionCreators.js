@@ -23,14 +23,28 @@ export const addProducts = (products) => ({
 });
 
 //----------------------------------------------
-export const updateCart = (cart) => (dispatch) => {
-    localStorage.setItem('cart',JSON.stringify(cart))
-    dispatch(addItems(cart))
+
+// export const fetchCart = () => (dispatch) => {
+//     const cart = localStorage.getItem('cart')
+//     dispatch(addItems(cart))
+// }
+
+export const addInToCart = (item) => (dispatch) => {
+    dispatch(addItem(item))
 }
 
-export const addItems = (cart) => ({
-    type: ActionTypes.ADD_ITEMS,
-    payload: cart
+export const clearCart = () => (dispatch) => {
+    localStorage.removeItem('cart');
+    dispatch(clearItems())
+}
+
+export const addItem = (item) => ({
+    type: ActionTypes.ADD_ITEM,
+    payload: item
+});
+
+export const clearItems = () => ({
+    type: ActionTypes.CLEAR_ITEMS
 });
 
 //--------------------------------------------------

@@ -17,11 +17,13 @@ class Home extends Component {
     return (
       <div>
           <Container fluid className="root">
-            <SCLogo/>
+            <SCLogo history={this.props.history}/>
             <div className="header-title">
               <div >Hi, {this.props.auth.user===null?null:this.props.auth.user.username}</div>
               <div>Here is our services</div>
-              <Button className="request-btn" variant="success" href="#Services" >Request Now</Button>
+              <Button className="request-btn" variant="success" href="#Services" >Request New Servers</Button>
+              <br></br>
+              <Button className="request-btn" variant="success" >Update Servers</Button>
             </div>
 
          

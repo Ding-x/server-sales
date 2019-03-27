@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col,Button, ButtonGroup, Form } from 'react-bootstrap'
-import { Slider  } from 'antd';
+import {  Row, Col,Button, ButtonGroup, Form } from 'react-bootstrap'
 import "./Addition.css"
 
 class  VMOption extends Component {
@@ -10,9 +9,11 @@ class  VMOption extends Component {
 
         var showDiv = [], options=[]
 
+        var i
+
         if(this.props.servers){
             
-            for(var i=0; i<this.props.servers.length;i++){
+            for(i=0; i<this.props.servers.length;i++){
                 if(i===0){
                     showDiv[i]=true;
                 }
@@ -23,7 +24,7 @@ class  VMOption extends Component {
         }
 
         if(this.props.options){
-            for(var i=0; i<this.props.options.length;i++){
+            for(i=0; i<this.props.options.length;i++){
                 options[i]=this.props.options[i]
                 switch(options[i].type){
                     case "INPUT":
@@ -31,6 +32,8 @@ class  VMOption extends Component {
                        break
                     case "CHECKBOX":
                        options[i].value=false
+                       break
+                    default:
                        break
                 }
                
@@ -97,14 +100,14 @@ class  VMOption extends Component {
                                             </Form.Group>
                                  
                                       )
-                                      break
                                     case "CHECKBOX":
                                         return(
                                         <Form.Group as={Col} key={option.id}>
                                             <Form.Check type="checkbox" onChange={this.handleCheckOptionChange.bind(this,index)} checked={option.value} label={option.name +" ("+ option.price +"/"+option.unit+")"} />
                                         </Form.Group>
                                         )
-                                        break
+                                    default:
+                                        return(null)
                                 }
                             })
                             :
@@ -123,12 +126,13 @@ class  VMOption extends Component {
                   <Col xs={3} className="addition-summary">
                       {this.state.currOptions?
                             this.state.currOptions.map((option, index)=>{
-                                console.log(option.value)
-                                if(option.value!="0" && option.value!==false && option.value!=''){
+                                if(option.value!=="0" && option.value!==false && option.value!==''){
                                     return(
                                         <p>{option.name}</p>
                                     )
                                 }
+                                else
+                                return(null)
                             })
                             :
                             null

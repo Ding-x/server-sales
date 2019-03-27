@@ -15,3 +15,5 @@ export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
 export const ADD_ITEMS = 'ADD_ITEMS';
+export const CLEAR_ITEMS = 'CLEAR_ITEMS';
+export const ADD_ITEM = 'ADD_ITEM';
