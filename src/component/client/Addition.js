@@ -12,11 +12,11 @@ class  Addition extends Component {
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
-      show: false,
-      serverNum: 2,
-      servers: [{name:"s1", type:"Prod"},{name:"s2", type:"Test"}],
+      show: true,
+      serverNum: 1,
+      servers: [{name:"", type:-1}],
       saveBtn:false,
-      showServerContainer:true
+      showServerContainer:false
     };
   }
 
