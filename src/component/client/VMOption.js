@@ -66,9 +66,30 @@ class  VMOption extends Component {
         this.setState({currOptions:tmp})
     }
 
+    decrease(index) {
+        var tmp = this.state.currOptions
+        tmp[index].value--
+        this.setState({currOptions:tmp})
+    }
+    
+    increase(index){
+        var tmp = this.state.currOptions
+        console.log(tmp[index].value)
+        tmp[index].value++
+        console.log(tmp[index].value)
+        this.setState({currOptions:tmp})
+    }
+
 
     render() {
         console.log(this.state)
+
+        var total = parseFloat(this.props.combo.price)
+        for(let option of this.state.currOptions){
+            total+=parseFloat(option.value*option.price)
+        }
+
+
         return (
         <div>
             <div>
@@ -96,7 +117,10 @@ class  VMOption extends Component {
                             
                                             <Form.Group as={Col} key={option.id} controlId="formGridCity">
                                             <Form.Label>{option.name} ({option.price}/{option.unit})</Form.Label>
-                                            <Form.Control value={option.value} onChange={this.handleInputOptionChange.bind(this,index)}/>
+                                            <div className="number-input">
+                                                <input className="quantity" value={option.value} onChange={this.handleInputOptionChange.bind(this,index)}
+                                                type="number" />
+                                            </div>
                                             </Form.Group>
                                  
                                       )
@@ -124,11 +148,37 @@ class  VMOption extends Component {
                         
                   </Col>
                   <Col xs={3} className="addition-summary">
+                        <Row className="summary-row" >
+                            <Col>
+                                <Row className="summary-row1" >
+                                    <Col  className="summary-col" > Base: </Col>
+                                    <Col  className="summary-col"> {this.props.combo.title}</Col>
+                                </Row>
+                                <Row className="summary-row2" >
+                                    <Col className="summary-col" > { this.props.combo.price}</Col>
+                                </Row>
+                            </Col>
+
+                            
+                        </Row>
                       {this.state.currOptions?
                             this.state.currOptions.map((option, index)=>{
-                                if(option.value!=="0" && option.value!==false && option.value!==''){
+                                if(option.value!==0 && option.value!=="0" && option.value!==false && option.value!==''){
                                     return(
-                                        <p>{option.name}</p>
+                                        
+                                        <Row className="summary-row" key={index}>
+                                            <Col>
+                                                <Row className="summary-row1" >
+                                                    <Col className="summary-col" > {option.name}</Col>
+                                                    <Col className="summary-col"> {option.value}</Col>
+                                                </Row>
+                                                <Row className="summary-row2">
+                                                    <Col className="summary-col" > { new Number(option.value*option.price).toFixed(2)}</Col>
+                                                </Row>
+                                            </Col>
+
+                                            
+                                        </Row>
                                     )
                                 }
                                 else
@@ -137,6 +187,19 @@ class  VMOption extends Component {
                             :
                             null
                             }
+
+                            <Row className="summary-row" >
+                                <Col>
+                                    <Row className="summary-row1" >
+                                        <Col  className="summary-col" > Total: </Col>
+                                    </Row>
+                                    <Row className="summary-row2" >
+                                        <Col className="summary-col" > { total.toFixed(2)}</Col>
+                                    </Row>
+                                </Col>
+
+                                
+                            </Row>
                   </Col>
                 </Row>
             </div>

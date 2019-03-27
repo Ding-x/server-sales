@@ -43,7 +43,7 @@ class  ShoppingCart extends Component {
                               <Col className="cart-content-col" xs={6}>{combo.detail}</Col>
                               <Col className="cart-content-col" xs={1}>{combo.price}</Col>
                               <Col className="cart-content-col" xs={2}><Button className="cart-content-btn" onClick={this.handleJumpToAddition.bind(this,combo.id)}>Customize</Button></Col>
-                              <Col className="cart-content-col" xs={1}><Button variant="secondary" className="cart-content-btn" onClick={this.deleteAnItem.bind(this,combo.id)}>Delete</Button></Col>
+                              <Col className="cart-content-col" xs={1}><Button variant="secondary" className="cart-content-btn" onClick={this.deleteAnItem.bind(this,index)}>Delete</Button></Col>
                             </Row>
                           )
                         })}

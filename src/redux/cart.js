@@ -9,9 +9,8 @@ export const Cart = (state = {
         case ActionTypes.ADD_ITEM:
             return {...state, cart: state.cart.concat(action.payload)};
         case ActionTypes.DELETE_ITEM:
-            var cart =  state.cart.filter(item=>{
-                return item.id!==action.payload
-            })
+            var cart = state.cart
+            delete cart[action.payload]
             return {...state, cart: cart};
         case ActionTypes.CLEAR_ITEMS:
             return {...state, cart: []};
