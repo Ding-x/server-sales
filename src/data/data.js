@@ -53,7 +53,7 @@ const comboList = [
         type:"Physical Server",
         data:[
             {
-                id:3,
+                id:7,
                 title:"Microsoft Windows",
                 detail:"Windows 2016|32GB RAM|600GB storage",
                 price:3800,
@@ -65,7 +65,7 @@ const comboList = [
         type:"Virtual PC",
         data:[
             {
-                id:4,
+                id:8,
                 title:"Virtual PC",
                 detail:"4GB RAM|80GB disk",
                 price:348,
@@ -77,13 +77,13 @@ const comboList = [
         type:"Database Server",
         data:[
             {
-                id:5,
+                id:9,
                 title:"Seperate SQL Virtual Server",
                 detail:"Windows 2016|4GB RAM|100GB OS disk|100GB Bin/sysDB|50GB SQL logs|100GB SQL userDB|100GB SQL logs",
                 price:904,
             },
             {
-                id:6,
+                id:10,
                 title:"Seperate Orcale Virtual Server",
                 detail:"Windows 2012|4GB RAM|100GB OS disk|100GB Bin|20GB Redo  logs|100GB Orcale  userDB|20GB redo logs",
                 price:833,

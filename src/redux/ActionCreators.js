@@ -1,6 +1,7 @@
 import * as ActionTypes from './ActionTypes';
 import comboList from '../data/data';
 import User from '../data/user';
+import cart from '../data/cart';
 
 export const fetchProducts = () => (dispatch) => {
     dispatch(productsLoading(true));
@@ -24,13 +25,21 @@ export const addProducts = (products) => ({
 
 //----------------------------------------------
 
-// export const fetchCart = () => (dispatch) => {
-//     const cart = localStorage.getItem('cart')
-//     dispatch(addItems(cart))
-// }
+export const fetchCart = () => (dispatch) => {
+    dispatch(addItems(cart))
+}
+
+export const addItems = (cart) => ({
+    type: ActionTypes.ADD_ITEMS,
+    payload: cart
+});
 
 export const addInToCart = (item) => (dispatch) => {
     dispatch(addItem(item))
+}
+
+export const deleteFromCart = (id) => (dispatch) => {
+    dispatch(deleteItem(id))
 }
 
 export const clearCart = () => (dispatch) => {
@@ -41,6 +50,11 @@ export const clearCart = () => (dispatch) => {
 export const addItem = (item) => ({
     type: ActionTypes.ADD_ITEM,
     payload: item
+});
+
+export const deleteItem = (id) => ({
+    type: ActionTypes.DELETE_ITEM,
+    payload: id
 });
 
 export const clearItems = () => ({

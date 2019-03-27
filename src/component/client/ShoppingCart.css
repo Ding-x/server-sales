@@ -1,0 +1,32 @@
+.cart-header{
+    background: #3d691f;
+}
+
+.title{
+    text-align: center;
+    font-size: 48px;
+    color: white;
+    font-weight: 600
+}
+
+.cart-content{
+    margin:50px auto;
+
+
+}
+
+.cart-content-row{
+    margin: 40px 0;
+    height: 80px;
+    border: 1px solid #eee;
+}
+
+
+.cart-content-col{
+    padding: 20px;
+
+}
+
+.cart-content-btn{
+    float: right;
+}

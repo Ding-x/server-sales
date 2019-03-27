@@ -13,7 +13,7 @@ import NotFound from "./NotFound"
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
-import {fetchProducts,loginUser, logoutUser, addInToCart, clearCart} from '../redux/ActionCreators';
+import {fetchProducts,loginUser, logoutUser,fetchCart, addInToCart, clearCart, deleteFromCart} from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
 
@@ -26,10 +26,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchProducts: () =>  dispatch(fetchProducts()),
+
   loginUser: (creds) => dispatch(loginUser(creds)),
   logoutUser: () => dispatch(logoutUser()),
+
+  fetchCart: () =>  dispatch(fetchCart()),
   addInToCart: (item) => dispatch(addInToCart(item)),
-  clearCart: () => dispatch(clearCart())
+  clearCart: () => dispatch(clearCart()),
+  deleteFromCart: (id) => dispatch(deleteFromCart(id))
 });
 
 
@@ -37,7 +41,8 @@ const mapDispatchToProps = dispatch => ({
 class Main extends Component {
 
   componentDidMount() {
-    this.props.fetchProducts();   
+    this.props.fetchProducts(); 
+    this.props.fetchCart(); 
   }
   
   render() {
@@ -50,7 +55,6 @@ class Main extends Component {
         collection.data.map((combo)=>{
           if(combo.id===parseInt(match.params.id)){
             product = combo
-            console.log(collection)
             options = collection.options
           }
         })
@@ -83,6 +87,7 @@ class Main extends Component {
                                                               history={this.props.history} 
                                                               cart={this.props.cart.cart} 
                                                               clearCart={this.props.clearCart}
+                                                              deleteFromCart={this.props.deleteFromCart}
                                                               />} />
           <Route path='/Addition/:id' component={additionWihID} />
 

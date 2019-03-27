@@ -10,47 +10,44 @@ class Services extends Component {
 
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
-   
-
+    this.addToCart = this.addToCart.bind(this);
+    
     this.state = {
       show: false,
+      currCombo:null
     };
+
   }
 
   handleClose() {
     this.setState({ show: false });
   }
 
-  handleShow() {
-    console.log(123)
-    this.setState({ show: true });
+  handleShow(combo) {
+    this.setState({ show: true,  currCombo:combo });
   }
 
-  handleJumpToAddition(id){
-    this.props.history.push('Addition/'+id)
-  }
 
-  addToCart(combo){
-    this.props.addInToCart(combo)
-    this.handleShow();
-    
+  addToCart(){
+    this.props.addInToCart(this.state.currCombo)
   }
 
 
   render() {
-    console.log(this.state)
-
     return (
       <div>
           <Container  className="root">
             <Modal show={this.state.show} onHide={this.handleClose}>
               <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title>Add to cart?</Modal.Title>
               </Modal.Header>
-              <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+              <Modal.Body>Do you want to add {this.state.currCombo? this.state.currCombo.title : null} to your cart?</Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={this.handleClose}>
-                  Close
+                  No
+                </Button>
+                <Button variant="primary" onClick={this.addToCart}>
+                  Yes
                 </Button>
               </Modal.Footer>
             </Modal>
@@ -76,7 +73,7 @@ class Services extends Component {
                                     )}
                                 </Card.Body>
                             <Card.Footer>${combo.price}/Year</Card.Footer>
-                            <Card.Footer><Button variant="primary" onClick={this.addToCart.bind(this,combo)} >Add to Cart</Button></Card.Footer>
+                            <Card.Footer><Button variant="primary" onClick={()=> {combo.type = subComboList.type; this.handleShow(combo)}} >Add to Cart</Button></Card.Footer>
                             </Card>
                           </Col>
 
