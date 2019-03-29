@@ -7,43 +7,57 @@ const comboList = [
                 id:1,
                 title:"Microsoft Windows",
                 detail:"Windows 2016|4GB RAM|100GB OS disk",
-                price:680,
+                price:680.00,
             },
             {
                 id:2,
                 title:"Linux",
                 detail:"Ubuntu 18.04|2GB RAM|20GB OS disk",
-                price:313,
+                price:313.00,
             }
         ],
         options:[
             {
-                id:3,
-                name:"Disk Storage",
-                price:"23.5",
+                id:1,
+                name:"Additional Disk",
+                price:23.5,
                 unit:"GB",
                 type:"INPUT"
+            },
+            {
+                id:2,
+                name:"Additional Memory",
+                price:12.8,
+                unit:"GB",
+                type:"INPUT"
+            },
+            {
+                id:3,
+                name:"Check 1",
+                price:88.5,
+                unit:"ITEM",
+                type:"CHECKBOX"
             },
             {
                 id:4,
-                name:"Memory",
-                price:"12.8",
-                unit:"GB",
-                type:"INPUT"
+                name:"Check 2",
+                price:134.00,
+                unit:"ITEM",
+                type:"CHECKBOX"
             },
             {
                 id:5,
-                name:"Service 1",
-                price:"88.5",
-                unit:"ITEM",
-                type:"CHECKBOX"
+                name:"Radio 1",
+                type:"RADIOBOX",
+                index:-1,
+                options:[{name:"O1", price:111.00, unit:"ITEM"},{name:"O2", price:222.00, unit:"ITEM"},{name:"O3", price:333.00, unit:"ITEM"}]
             },
             {
                 id:6,
-                name:"Service 2",
-                price:"134",
-                unit:"ITEM",
-                type:"CHECKBOX"
+                name:"Radio 2",
+                type:"RADIOBOX",
+                index:-1,
+                options:[{name:"P1", price:11.00, unit:"ITEM"},{name:"P2", price:22.00, unit:"ITEM"},{name:"P3", price:33.00, unit:"ITEM"},{name:"P4", price:44.00, unit:"ITEM"}]
             },
         ]
 
@@ -56,7 +70,7 @@ const comboList = [
                 id:7,
                 title:"Microsoft Windows",
                 detail:"Windows 2016|32GB RAM|600GB storage",
-                price:3800,
+                price:3800.00,
             }
         ]
     },
@@ -68,7 +82,7 @@ const comboList = [
                 id:8,
                 title:"Virtual PC",
                 detail:"4GB RAM|80GB disk",
-                price:348,
+                price:348.00,
             }
         ]
     },
@@ -80,13 +94,13 @@ const comboList = [
                 id:9,
                 title:"Seperate SQL Virtual Server",
                 detail:"Windows 2016|4GB RAM|100GB OS disk|100GB Bin/sysDB|50GB SQL logs|100GB SQL userDB|100GB SQL logs",
-                price:904,
+                price:904.00,
             },
             {
                 id:10,
                 title:"Seperate Orcale Virtual Server",
                 detail:"Windows 2012|4GB RAM|100GB OS disk|100GB Bin|20GB Redo  logs|100GB Orcale  userDB|20GB redo logs",
-                price:833,
+                price:833.00,
             }
         ]
     }
