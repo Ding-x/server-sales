@@ -13,8 +13,8 @@ class  Addition extends Component {
 
     this.state = {
       show: true,
-      serverNum: 2,
-      servers: [{name:"test1", type:"Prod"}, {name:"test2", type:"Test"}],
+      serverNum: 3,
+      servers: [{name:"ProductionServer", type:"Prod"}, {name:"DevelopmentServer", type:"Dev"}, {name:"TestServer", type:"Test"}],
       saveBtn:true,
       showServerContainer:false
     };

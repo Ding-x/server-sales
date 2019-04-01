@@ -47,6 +47,12 @@ class  VMOption extends Component {
             servers:this.props.servers,
             fixedOption:[
                 {
+                    id:0,
+                    name:"Vendor requirement for CPUs",
+                    value:1,
+                    type:"INPUT"
+                },
+                {
                     id:1,
                     name:"Will server contain an Oracle RDMS or MS SQL Server (Not including MS SQL Express) database?",
                     type:"COMPUNDRADIOBOX",
@@ -121,18 +127,12 @@ class  VMOption extends Component {
                 },
                 {
                     id:10,
-                    name:"Rebbot Day and Time",
+                    name:"Reboot Day and Time",
                     value:"",
                     type:"INPUT"
                 },
                 {
                     id:11,
-                    name:"Rebbot Day and Time",
-                    value:"",
-                    type:"INPUT"
-                },
-                {
-                    id:12,
                     name:"Any other notes or comments",
                     value:"",
                     type:"INPUT"
@@ -260,14 +260,13 @@ class  VMOption extends Component {
                             <Form>
                                 {this.state.fixedOption?
                                 this.state.fixedOption.map((option,index)=>{
-                                    console.log(option.type)
                                     switch(option.type){
                                         case "COMPUNDRADIOBOX":
                                         return(
-                                            <Row className="addition-option-row">
+                                            <Row key={index} className="addition-option-row">
                                        
                                             <Col xs="5" >
-                                                <Form.Group key={index} onChange={this.handleRadioFixedOptionChange.bind(this,index)}   key={option.id} controlId={index}>
+                                                <Form.Group  onChange={this.handleRadioFixedOptionChange.bind(this,index)}   key={option.id} controlId={index}>
                                                     <Row className="addition-option-row-label">{option.name}</Row>
                                                     <br></br>
                                                     {option.options.map((radioOption,index1) => {
@@ -345,7 +344,7 @@ class  VMOption extends Component {
                                               <Form.Group className="addition-option-row" as={Row} key={option.id} >
                                               <Col xs="5" className="addition-option-row-label">{option.name}</Col>
                                               <Col xs="7" className="number-input">
-                                                  <input className="quantity" value={option.value} 
+                                                  <input className="quantity" 
                                                   type="text" />
                                               </Col>
                                               </Form.Group>
@@ -389,7 +388,7 @@ class  VMOption extends Component {
                                                     <Col xs={4} className="summary-col"> {option.value} {option.unit}</Col>
                                                 </Row>
                                                 <Row className="summary-row2">
-                                                    <Col className="summary-col" >$ { new Number(option.value*option.price).toFixed(2)}</Col>
+                                                    <Col className="summary-col" >${ new Number(option.value*option.price).toFixed(2)}</Col>
                                                 </Row>
                                             </Col>
 

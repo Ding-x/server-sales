@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import "./ShoppingCart.css"
-import { cpus } from 'os';
 
 class  ShoppingCart extends Component {
 

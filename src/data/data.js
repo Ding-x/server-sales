@@ -1,6 +1,6 @@
 const comboList = [
     {
-        id:12312,
+        id:1,
         type:"Virtual Server",
         data:[
             {
@@ -15,70 +15,10 @@ const comboList = [
                 detail:"Ubuntu 18.04|2GB RAM|20GB OS disk",
                 price:313.00,
             }
-        ],
-        options:[
-            {
-                id:1,
-                name:"Additional Disk",
-                price:0.64,
-                unit:"GB",
-                type:"INPUT"
-            },
-            {
-                id:2,
-                name:"Additional Memory",
-                price:41.00,
-                unit:"GB",
-                type:"INPUT"
-            },
-            {
-                id:3,
-                name:"Database",
-                type:"RADIOBOX",
-                index:-1,
-                options:[{name:"N/A", price:0, unit:"Database"},{name:"SQL - instance on Shared server", price:739.88, unit:"Database"},{name:"Oracle - instance on Shared server", price:714.38, unit:"Database"}]
-            },
-            {
-                id:4,
-                name:"MS Exchange Mailbox",
-                price:83.13,
-                unit:"USER",
-                type:"INPUT"
-            },
-            
-            {
-                id:5,
-                name:"Active Directory User License",
-                price:11.00,
-                unit:"USER",
-                type:"INPUT"
-            },
-            {
-                id:6,
-                name:" Symantec EndPoint Protection",
-                price:12.00,
-                unit:"USER",
-                type:"INPUT"
-            },
-            {
-                id:7,
-                name:"Nimsoft/Service Modeling Add-On",
-                price:500.00,
-                unit:"ITEM",
-                type:"CHECKBOX"
-            },
-            {
-                id:8,
-                name:"Support Hours",
-                type:"RADIOBOX",
-                index:-1,
-                options:[{name:"5 x 9", price:900.00, unit:"Support Hours"},{name:"7 x 16", price:2500.00, unit:"Support Hours"},{name:"7 x 16", price:3500.00, unit:"Support Hours"}]
-            }
         ]
-
     },
     {
-        id:131212,
+        id:2,
         type:"Physical Server",
         data:[
             {
@@ -90,7 +30,7 @@ const comboList = [
         ]
     },
     {
-        id:34534,
+        id:3,
         type:"Virtual PC",
         data:[
             {
@@ -102,7 +42,7 @@ const comboList = [
         ]
     },
     {
-        id:12331231,
+        id:4,
         type:"Database Server",
         data:[
             {
@@ -116,6 +56,48 @@ const comboList = [
                 title:"Seperate Orcale Virtual Server",
                 detail:"Windows 2012|4GB RAM|100GB OS disk|100GB Bin|20GB Redo  logs|100GB Orcale  userDB|20GB redo logs",
                 price:833.00,
+            }
+        ]
+    },
+    {
+        id:5,
+        type:"Database Instance on Shared Server",
+        data:[
+            {
+                id:11,
+                title:"SQL Database Instance",
+                detail:"",
+                price:739.88,
+            },
+            {
+                id:12,
+                title:"Oracle Database Instance",
+                detail:"",
+                price:714.38,
+            }
+        ]
+    },
+    {
+        id:6,
+        type:"Other Sevices",
+        data:[
+            {
+                id:13,
+                title:"MS Exchange Mailbox Per User",
+                detail:"",
+                price:83.13,
+            },
+            {
+                id:14,
+                title:"Active Directory User License Per User",
+                detail:"",
+                price:11.00,
+            },
+            {
+                id:15,
+                title:"Symantec EndPoint Protection Per User",
+                detail:"",
+                price:12.00,
             }
         ]
     }

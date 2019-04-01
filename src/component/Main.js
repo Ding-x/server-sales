@@ -7,13 +7,17 @@ import Services from "./client/Services"
 import ShoppingCart from "./client/ShoppingCart"
 import Addition from "./client/Addition"
 import Auth from "./client/Auth"
-
-
 import NotFound from "./NotFound"
+
+
+import options from "../data/option"
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
-import {fetchProducts,loginUser, logoutUser,fetchCart, addInToCart, clearCart, deleteFromCart} from '../redux/ActionCreators';
+import {fetchProducts,
+        loginUser, logoutUser,
+        fetchCart, addInToCart, clearCart, deleteFromCart,
+      } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
 
@@ -46,19 +50,18 @@ class Main extends Component {
   }
   
   render() {
-
     
     const additionWihID = ({match}) => {
 
-      var product, options
+      var product
       this.props.products.products.map((collection)=>{
         collection.data.map((combo)=>{
           if(combo.id===parseInt(match.params.id)){
             product = combo
-            options = collection.options
           }
         })
       })
+
       return(
           <Addition  combo={product} options={options} auth={this.props.auth} history={this.props.history}
           />
