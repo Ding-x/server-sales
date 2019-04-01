@@ -45,6 +45,47 @@ class  VMOption extends Component {
             currServer:this.props.servers[0],
             currOptions:options,
             servers:this.props.servers,
+            fixedOption:[
+                {
+                    id:1,
+                    name:"Do you want A?",
+                    type:"RADIOBOX",
+                    value:false,
+                    options:[{name:"No", value:false},{name:"Yes", value:true}],
+                    subOption:{
+                        name:"If A, then?",
+                        type:"RADIOBOX",
+                        index:-1,
+                        options:[{name:"a1"},{name:"a2",},{name:"a3"},{name:"a4"}]
+                    }
+                },
+                {
+                    id:2,
+                    name:"Do you want B?",
+                    type:"RADIOBOX",
+                    value:false,
+                    options:[{name:"No", value:false},{name:"Yes", value:true}],
+                    subOption:{
+                        name:"If B, then?",
+                        type:"RADIOBOX",
+                        index:-1,
+                        options:[{name:"b1"},{name:"b2",},{name:"b3"}]
+                    }
+                },
+                
+                {
+                    id:3,
+                    name:"Do you want C?",
+                    type:"RADIOBOX",
+                    value:false,
+                    options:[{name:"No", value:false},{name:"Yes", value:true}],
+                    subOption:{
+                        name:"If C, then?",
+                        type:"INPUT",
+                        value:""
+                    }
+                },
+            ]
             
         }
     }
@@ -58,7 +99,7 @@ class  VMOption extends Component {
         var tmp = this.state.currOptions
         if(e.target.value <0 )
             e.target.value = 0
-        tmp[index].value=e.target.value
+        tmp[index].value=Math.round(e.target.value)
         this.setState({currOptions:tmp})
     }
 
@@ -72,6 +113,13 @@ class  VMOption extends Component {
         var tmp = this.state.currOptions
         tmp[index].index=parseInt(e.target.value)
         this.setState({currOptions:tmp})
+    }
+
+
+    handleRadioFixedOptionChange(index,e){
+        var tmp = this.state.fixedOption
+        tmp[index].value=(/true/i).test(e.target.value)
+        this.setState({fixedOption:tmp})
     }
 
 
@@ -155,6 +203,74 @@ class  VMOption extends Component {
                             }
                            
                         
+                            </Form>
+
+                            <Form>
+                                {this.state.fixedOption?
+                                this.state.fixedOption.map((option,index)=>{
+                                    return(
+                                        <Row className="addition-option-row">
+                                   
+                                        <Col xs="5" >
+                                            <Form.Group key={index} onChange={this.handleRadioFixedOptionChange.bind(this,index)}   key={option.id} controlId={index}>
+                                                <Row className="addition-option-row-label">{option.name}</Row>
+                                                <br></br>
+                                                {option.options.map((radioOption,index1) => {
+                                                    return(
+                                                        <Form.Check key={index1}  type="radio" value={radioOption.value} label={radioOption.name} name={index}/>
+                                                        
+
+                                                    )
+                                                })}
+                                            </Form.Group>
+                                        </Col>
+                                        <Col xs="7">
+                                            {option.value === true?
+                                                <div>
+                                                    <Row> {option.subOption.name} </Row>
+
+                                                    {option.subOption.type ==="RADIOBOX"?
+                                                    <Row>
+                                                    <Form.Group as={Col} key={option.id}>
+                                                    {option.subOption.options.map((anOption,index1) => {
+                                                        return(
+                                                            <Form.Check key={index1} as={Row} type="radio" value={index1} label={anOption.name} name={index1}/>
+                                                        )
+                                                    })}
+                                                    </Form.Group>
+                                                </Row>
+                                                :
+                                                null}
+                                                
+                                                {option.subOption.type ==="INPUT"?
+                                                    <Row>
+                                                     <Form.Group key={option.id} >
+                                         
+                                            <Col  >
+                                                <input className="quantity" 
+                                                type="text" />
+                                            </Col>
+                                            </Form.Group>
+                                                </Row>
+                                                :
+                                                null}
+                                                    
+                                                </div>
+                                                
+                                                :
+                                                null
+
+                                        }
+                                            
+                                        </Col>
+                                    
+                                        </Row>
+                              
+                                    )
+                                })
+                            :
+                            null
+                            }
                             </Form>
                          </div>
                         
