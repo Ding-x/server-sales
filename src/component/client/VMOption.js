@@ -48,43 +48,95 @@ class  VMOption extends Component {
             fixedOption:[
                 {
                     id:1,
-                    name:"Do you want A?",
-                    type:"RADIOBOX",
+                    name:"Will server contain an Oracle RDMS or MS SQL Server (Not including MS SQL Express) database?",
+                    type:"COMPUNDRADIOBOX",
                     value:false,
                     options:[{name:"No", value:false},{name:"Yes", value:true}],
                     subOption:{
-                        name:"If A, then?",
+                        name:"Which server?",
                         type:"RADIOBOX",
                         index:-1,
-                        options:[{name:"a1"},{name:"a2",},{name:"a3"},{name:"a4"}]
-                    }
-                },
-                {
-                    id:2,
-                    name:"Do you want B?",
-                    type:"RADIOBOX",
-                    value:false,
-                    options:[{name:"No", value:false},{name:"Yes", value:true}],
-                    subOption:{
-                        name:"If B, then?",
-                        type:"RADIOBOX",
-                        index:-1,
-                        options:[{name:"b1"},{name:"b2",},{name:"b3"}]
+                        options:[{name:"Oracle"},{name:"MS SQL",}]
                     }
                 },
                 
                 {
-                    id:3,
-                    name:"Do you want C?",
-                    type:"RADIOBOX",
+                    id:2,
+                    name:"Will this contain a web server?",
+                    type:"COMPUNDRADIOBOX",
                     value:false,
                     options:[{name:"No", value:false},{name:"Yes", value:true}],
                     subOption:{
-                        name:"If C, then?",
+                        name:"Which software? (IIS, Apache, etc.)",
                         type:"INPUT",
                         value:""
                     }
                 },
+                {
+                    id:3,
+                    name:"Long term backup of data required?",
+                    type:"RADIOBOX",
+                    index:false,
+                    options:[{name:"No", value:false},{name:"Yes", value:true}]
+                },
+                {
+                    id:4,
+                    name:"Will this server contain or manage any credit card information?",
+                    type:"RADIOBOX",
+                    index:false,
+                    options:[{name:"No", value:false},{name:"Yes", value:true}]
+                },
+                {
+                    id:5,
+                    name:"Will this server contain or manage any PCI or FIPPA information?",
+                    type:"RADIOBOX",
+                    index:false,
+                    options:[{name:"No", value:false},{name:"Yes", value:true}]
+                },
+                {
+                    id:6,
+                    name:"Does this server need to access anything on the Internet?",
+                    type:"RADIOBOX",
+                    index:false,
+                    options:[{name:"No", value:false},{name:"Yes", value:true}]
+                },
+                {
+                    id:7,
+                    name:"Does anything on the Internet need to access this server?",
+                    type:"RADIOBOX",
+                    index:false,
+                    options:[{name:"No", value:false},{name:"Yes", value:true}]
+                },
+                {
+                    id:8,
+                    name:"Admin User/Group",
+                    value:"",
+                    type:"INPUT"
+                },
+                {
+                    id:9,
+                    name:"Template Name (If applicable)",
+                    value:"",
+                    type:"INPUT"
+                },
+                {
+                    id:10,
+                    name:"Rebbot Day and Time",
+                    value:"",
+                    type:"INPUT"
+                },
+                {
+                    id:11,
+                    name:"Rebbot Day and Time",
+                    value:"",
+                    type:"INPUT"
+                },
+                {
+                    id:12,
+                    name:"Any other notes or comments",
+                    value:"",
+                    type:"INPUT"
+                }
             ]
             
         }
@@ -161,7 +213,7 @@ class  VMOption extends Component {
                                       return(
                             
                                             <Form.Group className="addition-option-row" as={Row} key={option.id} >
-                                            <Col xs="5" className="addition-option-row-label">{option.name} ({option.price}/{option.unit})</Col>
+                                            <Col xs="5" className="addition-option-row-label">{option.name} (${option.price} / {option.unit})</Col>
                                             <Col xs="7" className="number-input">
                                                 <input className="quantity" value={option.value} onChange={this.handleInputOptionChange.bind(this,index)}
                                                 type="number" />
@@ -172,7 +224,7 @@ class  VMOption extends Component {
                                     case "CHECKBOX":
                                         return(
                                         <Form.Group className="addition-option-row" as={Row} key={option.id}>
-                                            <Form.Check type="checkbox" onChange={this.handleCheckOptionChange.bind(this,index)} checked={option.value} label={option.name +" ("+ option.price +"/"+option.unit+")"} />
+                                            <Form.Check type="checkbox" onChange={this.handleCheckOptionChange.bind(this,index)} checked={option.value} label={option.name +" ($"+ option.price +" / "+option.unit+")"} />
                                         </Form.Group>
                                         )
                                     case "RADIOBOX":
@@ -182,7 +234,7 @@ class  VMOption extends Component {
                                                 <Col xs="5" className="addition-option-row-label">{option.name}</Col>
                                                 <Col xs="7">
                                                     {option.options.map((radioOption,index1) => {
-                                                        const key = radioOption.name +" ("+ radioOption.price +"/"+radioOption.unit+")"
+                                                        const key = radioOption.name +" ($"+ radioOption.price +" / "+radioOption.unit+")"
                                                         return(
                                                             <Form.Check key={index1} as={Row} type="radio" value={index1} label={key} name={option.name}/>
 
@@ -208,65 +260,101 @@ class  VMOption extends Component {
                             <Form>
                                 {this.state.fixedOption?
                                 this.state.fixedOption.map((option,index)=>{
-                                    return(
-                                        <Row className="addition-option-row">
-                                   
-                                        <Col xs="5" >
-                                            <Form.Group key={index} onChange={this.handleRadioFixedOptionChange.bind(this,index)}   key={option.id} controlId={index}>
-                                                <Row className="addition-option-row-label">{option.name}</Row>
-                                                <br></br>
-                                                {option.options.map((radioOption,index1) => {
-                                                    return(
-                                                        <Form.Check key={index1}  type="radio" value={radioOption.value} label={radioOption.name} name={index}/>
-                                                        
-
-                                                    )
-                                                })}
-                                            </Form.Group>
-                                        </Col>
-                                        <Col xs="7">
-                                            {option.value === true?
-                                                <div>
-                                                    <Row> {option.subOption.name} </Row>
-
-                                                    {option.subOption.type ==="RADIOBOX"?
-                                                    <Row>
-                                                    <Form.Group as={Col} key={option.id}>
-                                                    {option.subOption.options.map((anOption,index1) => {
+                                    console.log(option.type)
+                                    switch(option.type){
+                                        case "COMPUNDRADIOBOX":
+                                        return(
+                                            <Row className="addition-option-row">
+                                       
+                                            <Col xs="5" >
+                                                <Form.Group key={index} onChange={this.handleRadioFixedOptionChange.bind(this,index)}   key={option.id} controlId={index}>
+                                                    <Row className="addition-option-row-label">{option.name}</Row>
+                                                    <br></br>
+                                                    {option.options.map((radioOption,index1) => {
                                                         return(
-                                                            <Form.Check key={index1} as={Row} type="radio" value={index1} label={anOption.name} name={index1}/>
+                                                            <Form.Check key={index1}  type="radio" value={radioOption.value} label={radioOption.name} name={index}/>
+                                                            
+    
                                                         )
                                                     })}
-                                                    </Form.Group>
-                                                </Row>
-                                                :
-                                                null}
-                                                
-                                                {option.subOption.type ==="INPUT"?
-                                                    <Row>
-                                                     <Form.Group key={option.id} >
-                                         
-                                            <Col  >
-                                                <input className="quantity" 
-                                                type="text" />
+                                                </Form.Group>
                                             </Col>
-                                            </Form.Group>
-                                                </Row>
-                                                :
-                                                null}
+                                            <Col xs="7">
+                                                {option.value === true?
+                                                    <div>
+                                                        <Row> {option.subOption.name} </Row>
+    
+                                                        {option.subOption.type ==="RADIOBOX"?
+                                                        <Row>
+                                                        <Form.Group as={Col} key={option.id}>
+                                                        {option.subOption.options.map((anOption,index1) => {
+                                                            return(
+                                                                <Form.Check key={index1} as={Row} type="radio" value={index1} label={anOption.name} name={index1}/>
+                                                            )
+                                                        })}
+                                                        </Form.Group>
+                                                    </Row>
+                                                    :
+                                                    null}
                                                     
-                                                </div>
+                                                    {option.subOption.type ==="INPUT"?
+                                                        <Row>
+                                                         <Form.Group key={option.id} >
+                                             
+                                                <Col  >
+                                                    <input className="quantity" 
+                                                    type="text" />
+                                                </Col>
+                                                </Form.Group>
+                                                    </Row>
+                                                    :
+                                                    null}
+                                                        
+                                                    </div>
+                                                    
+                                                    :
+                                                    null
+    
+                                            }
                                                 
-                                                :
-                                                null
+                                            </Col>
+                                        
+                                            </Row>
+                                  
+                                        )
+                                        case "RADIOBOX":
+                                        return(
+                                            <Form.Group  className="addition-option-row" as={Row} key={option.id} controlId={option.name}>
+                                   
+                                                    <Col xs="5" className="addition-option-row-label">{option.name}</Col>
+                                                    <Col xs="7">
+                                                        {option.options.map((radioOption,index1) => {
+                                                            return(
+                                                                <Form.Check key={index1} as={Row} type="radio" value={index1} label={radioOption.name} name={option.name}/>
 
-                                        }
-                                            
-                                        </Col>
-                                    
-                                        </Row>
+                                                            )
+                                                        })}
+                                                    </Col>
+                                                
+
+                                            </Form.Group>
+                                        )
+                                        case "INPUT":
+                                        return(
                               
-                                    )
+                                              <Form.Group className="addition-option-row" as={Row} key={option.id} >
+                                              <Col xs="5" className="addition-option-row-label">{option.name}</Col>
+                                              <Col xs="7" className="number-input">
+                                                  <input className="quantity" value={option.value} 
+                                                  type="text" />
+                                              </Col>
+                                              </Form.Group>
+                                   
+                                        )
+                                        default:
+                                            return (null)
+                                    }
+
                                 })
                             :
                             null
@@ -279,11 +367,11 @@ class  VMOption extends Component {
                         <Row className="summary-row" >
                             <Col>
                                 <Row className="summary-row1" >
-                                    <Col  className="summary-col" > Base: </Col>
-                                    <Col   className="summary-col"> {this.props.combo.title}</Col>
+                                    <Col xs={8} className="summary-col" > Base: </Col>
+                                    <Col xs={4}  className="summary-col"> {this.props.combo.title}</Col>
                                 </Row>
                                 <Row className="summary-row2" >
-                                    <Col className="summary-col" > { this.props.combo.price}</Col>
+                                    <Col className="summary-col" >${ this.props.combo.price}</Col>
                                 </Row>
                             </Col>
 
@@ -297,11 +385,11 @@ class  VMOption extends Component {
                                         <Row className="summary-row" key={index}>
                                             <Col>
                                                 <Row className="summary-row1" >
-                                                    <Col  className="summary-col" > {option.name}</Col>
-                                                    <Col  className="summary-col"> {option.value} {option.unit}</Col>
+                                                    <Col xs={8} className="summary-col" > {option.name}</Col>
+                                                    <Col xs={4} className="summary-col"> {option.value} {option.unit}</Col>
                                                 </Row>
                                                 <Row className="summary-row2">
-                                                    <Col className="summary-col" > { new Number(option.value*option.price).toFixed(2)}</Col>
+                                                    <Col className="summary-col" >$ { new Number(option.value*option.price).toFixed(2)}</Col>
                                                 </Row>
                                             </Col>
 
@@ -317,11 +405,11 @@ class  VMOption extends Component {
                                             <Row className="summary-row" key={index}>
                                                 <Col>
                                                     <Row className="summary-row1" >
-                                                        <Col className="summary-col" > {option.options[option.index].name}</Col>
-                                                        <Col className="summary-col"> {option.options[option.index].value} {option.options[option.index].unit}</Col>
+                                                        <Col xs={8} className="summary-col" > {option.options[option.index].name}</Col>
+                                                        <Col xs={4} className="summary-col"> {option.options[option.index].value} {option.options[option.index].unit}</Col>
                                                     </Row>
                                                     <Row className="summary-row2">
-                                                        <Col className="summary-col" > { new Number(option.options[option.index].price).toFixed(2)}</Col>
+                                                        <Col className="summary-col" >${ new Number(option.options[option.index].price).toFixed(2)}</Col>
                                                     </Row>
                                                 </Col>
     
@@ -343,7 +431,7 @@ class  VMOption extends Component {
                                         <Col  className="summary-col" > Total: </Col>
                                     </Row>
                                     <Row className="summary-row2" >
-                                        <Col className="summary-col" > { total.toFixed(2)}</Col>
+                                        <Col className="summary-col" >${ total.toFixed(2)}</Col>
                                     </Row>
                                 </Col>
 

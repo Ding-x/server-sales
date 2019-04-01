@@ -20,45 +20,60 @@ const comboList = [
             {
                 id:1,
                 name:"Additional Disk",
-                price:23.5,
+                price:0.64,
                 unit:"GB",
                 type:"INPUT"
             },
             {
                 id:2,
                 name:"Additional Memory",
-                price:12.8,
+                price:41.00,
                 unit:"GB",
                 type:"INPUT"
             },
             {
                 id:3,
-                name:"Check 1",
-                price:88.5,
-                unit:"ITEM",
-                type:"CHECKBOX"
+                name:"Database",
+                type:"RADIOBOX",
+                index:-1,
+                options:[{name:"N/A", price:0, unit:"Database"},{name:"SQL - instance on Shared server", price:739.88, unit:"Database"},{name:"Oracle - instance on Shared server", price:714.38, unit:"Database"}]
             },
             {
                 id:4,
-                name:"Check 2",
-                price:134.00,
+                name:"MS Exchange Mailbox",
+                price:83.13,
+                unit:"USER",
+                type:"INPUT"
+            },
+            
+            {
+                id:5,
+                name:"Active Directory User License",
+                price:11.00,
+                unit:"USER",
+                type:"INPUT"
+            },
+            {
+                id:6,
+                name:" Symantec EndPoint Protection",
+                price:12.00,
+                unit:"USER",
+                type:"INPUT"
+            },
+            {
+                id:7,
+                name:"Nimsoft/Service Modeling Add-On",
+                price:500.00,
                 unit:"ITEM",
                 type:"CHECKBOX"
             },
             {
-                id:5,
-                name:"Radio 1",
+                id:8,
+                name:"Support Hours",
                 type:"RADIOBOX",
                 index:-1,
-                options:[{name:"O1", price:111.00, unit:"ITEM"},{name:"O2", price:222.00, unit:"ITEM"},{name:"O3", price:333.00, unit:"ITEM"}]
-            },
-            {
-                id:6,
-                name:"Radio 2",
-                type:"RADIOBOX",
-                index:-1,
-                options:[{name:"P1", price:11.00, unit:"ITEM"},{name:"P2", price:22.00, unit:"ITEM"},{name:"P3", price:33.00, unit:"ITEM"},{name:"P4", price:44.00, unit:"ITEM"}]
-            },
+                options:[{name:"5 x 9", price:900.00, unit:"Support Hours"},{name:"7 x 16", price:2500.00, unit:"Support Hours"},{name:"7 x 16", price:3500.00, unit:"Support Hours"}]
+            }
         ]
 
     },
