@@ -242,7 +242,10 @@ class  VMOption extends Component {
                                                 <Col xs="7" className="addition-option-row-content">
                                                     {option.options.map((radioOption,index1) => {
                                                         const key = radioOption.name +" ($"+ radioOption.price +")"
+                                                        console.log(option.index)
+                                                        console.log(index1)
                                                         if(option.index===index1)
+                                            
                                                         return(
                                                             <Form.Check defaultChecked key={index1} inline type="radio" value={index1} label={key} name={option.name}/>
 
