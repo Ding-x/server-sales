@@ -167,6 +167,10 @@ class  VMOption extends Component {
     }
 
 
+    goBack=()=>{
+        this.props.history.goBack();
+    }
+
     render() {
         console.log(this.props)
       
@@ -201,7 +205,7 @@ class  VMOption extends Component {
                        </ButtonGroup>
 
                        <ButtonGroup vertical className="addition-btns">
-                       <Button variant="light" >Back</Button>
+                       <Button variant="light" onClick={this.goBack} >Back</Button>
 
                        <Button variant="success" disabled={this.state.disableSubmit} onClick={this.handleSubmit.bind(this)}>Submit</Button>
                        </ButtonGroup>

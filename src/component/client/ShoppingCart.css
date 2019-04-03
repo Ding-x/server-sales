@@ -10,7 +10,7 @@
 }
 
 .cart-content{
-    margin:50px auto;
+    margin:50px auto 20px auto;
 
 
 }
@@ -52,4 +52,21 @@
 .cart-footer-func{
     margin: 30px auto;
     text-align: center;
+}
+
+.combo{
+    float: left;
+    margin-right: 30px;
+    width: 18rem
+}
+
+.cart-price{
+    text-align: center;
+    margin:20px auto;
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+    padding: 30px;
+    color: rgba(219, 2, 2, 0.685);
+    font-size: 28px;
+    font-weight: 600;
 }
