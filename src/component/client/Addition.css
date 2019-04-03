@@ -26,7 +26,7 @@
     min-height: 600px;
     height: auto;
     background: #eee;
-    padding: 50px 50px 50px 30px;
+    padding: 50px 50px 150px 30px;
 
 }
 
@@ -49,18 +49,23 @@
 }
 
 .addition-summary{
+    height: 650px;
     background: #fff;
-    min-height: 600px;
     width: 100%;
     padding: 20px;
     border-radius: 10px;
-    overflow-y: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.addition-func{
+    position: fixed;
+    bottom: 200px;
 }
 
 .addition-btns{
     width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 50px;
 }
 
 .addition-options{
@@ -97,13 +102,18 @@
     padding-right: 30px;
 }
 
+.addition-option-row-content{
+    padding-top: 10px;
+    padding-right: 30px;
+}
+
 
 
 .number-input>input{
     border-radius: 0.25em;
     border: #666 1px solid;
-    height: 3em;
-    padding: 1em
+    height: 2em;
+    padding: 0.5em
 }
 
 .summary-row{
@@ -111,4 +121,12 @@
     margin: 1em auto;
     border-bottom: #eee 1px solid;
     margin-top: 30px;
+}
+
+.addition-save-btn{
+    margin: 20px auto;
+}
+
+.input-error{
+    color: red;
 }

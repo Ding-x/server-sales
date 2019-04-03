@@ -17,7 +17,7 @@
 
 .cart-content-row{
     margin: 40px 0;
-    height: 80px;
+    min-height: 80px;
     border: 1px solid #eee;
 }
 

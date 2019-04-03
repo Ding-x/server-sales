@@ -189,7 +189,7 @@ console.log(this.props)
                 
              
 
-                {this.state.showServerContainer? <VMOption servers={this.state.servers} options={this.props.options} reSelect={this.handleShow} combo={this.props.combo} />  : null }
+                {this.state.showServerContainer? <VMOption servers={this.state.servers} options={this.props.options} reSelect={this.handleShow} combo={this.props.combo} updateItemInCart={this.props.updateItemInCart} cart={this.props.cart} history={this.props.history}/>  : null }
             </Container>
 
       </div>

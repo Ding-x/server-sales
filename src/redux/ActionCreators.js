@@ -1,7 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 import comboList from '../data/data';
 import User from '../data/user';
-import cart from '../data/cart';
 
 export const fetchProducts = () => (dispatch) => {
     dispatch(productsLoading(true));
@@ -26,6 +25,7 @@ export const addProducts = (products) => ({
 //----------------------------------------------
 
 export const fetchCart = () => (dispatch) => {
+    var cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem('cart')) : []
     dispatch(addItems(cart))
 }
 
@@ -35,16 +35,35 @@ export const addItems = (cart) => ({
 });
 
 export const addInToCart = (item) => (dispatch) => {
+    var cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem('cart')) : []
+    cart.push(item)
+    localStorage.setItem('cart', JSON.stringify(cart));
     dispatch(addItem(item))
 }
 
 export const deleteFromCart = (id) => (dispatch) => {
+    var cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem('cart')) : []
+    delete cart[id]
+    localStorage.setItem('cart', JSON.stringify(cart));
     dispatch(deleteItem(id))
 }
 
 export const clearCart = () => (dispatch) => {
     localStorage.removeItem('cart');
     dispatch(clearItems())
+}
+
+export const updateItemInCart = (newItem) => (dispatch) => {
+    var cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem('cart')) : []
+    var i
+    for(i=0; i<cart.length;i++){
+        if(cart[i].id===newItem.id){
+            cart.splice(i,1,newItem)
+        }      
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    dispatch(updateItem(newItem))
 }
 
 export const addItem = (item) => ({
@@ -61,6 +80,10 @@ export const clearItems = () => ({
     type: ActionTypes.CLEAR_ITEMS
 });
 
+export const updateItem = (item) => ({
+    type: ActionTypes.UPDATE_ITEM,
+    payload:item
+});
 //--------------------------------------------------
 
 export const requestLogin = (creds) => {

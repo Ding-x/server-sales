@@ -16,7 +16,7 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import {fetchProducts,
         loginUser, logoutUser,
-        fetchCart, addInToCart, clearCart, deleteFromCart,
+        fetchCart, addInToCart, clearCart, deleteFromCart, updateItemInCart
       } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
@@ -37,7 +37,8 @@ const mapDispatchToProps = dispatch => ({
   fetchCart: () =>  dispatch(fetchCart()),
   addInToCart: (item) => dispatch(addInToCart(item)),
   clearCart: () => dispatch(clearCart()),
-  deleteFromCart: (id) => dispatch(deleteFromCart(id))
+  deleteFromCart: (id) => dispatch(deleteFromCart(id)),
+  updateItemInCart: (item) => dispatch(updateItemInCart(item))
 });
 
 
@@ -54,16 +55,17 @@ class Main extends Component {
     const additionWihID = ({match}) => {
 
       var product
-      this.props.products.products.map((collection)=>{
-        collection.data.map((combo)=>{
+
+      for(let collection of this.props.products.products){
+        for(let combo of collection.data){
           if(combo.id===parseInt(match.params.id)){
             product = combo
           }
-        })
-      })
+        }
+      }
 
       return(
-          <Addition  combo={product} options={options} auth={this.props.auth} history={this.props.history}
+          <Addition  combo={product} options={options} auth={this.props.auth} history={this.props.history} cart={this.props.cart.cart} updateItemInCart={this.props.updateItemInCart}
           />
       );
     };
