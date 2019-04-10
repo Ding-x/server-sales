@@ -1,4 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is the **Client side Front-end** of server request system. Clients in city hall can request their server services through this system.
+
+It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+##Technology Stack
+
+This proejtc was built with react, [react-router](https://reacttraining.com/react-router/), and [react-redux](https://react-redux.js.org/)
 
 ## Available Scripts
 
@@ -43,26 +49,44 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+#### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+This section has moved [here](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+#### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+This section has moved [here]( https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+#### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+This section has moved [here](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+#### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+This section has moved [here]( https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+#### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+This section has moved [here](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+#### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This section has moved [here]( https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## What's next?
+
+#### 1. Management side Front-end of server request system
+We need a dashboard (management side Front-end) to manage the request system. Administators can modify services with their attributes in
+the dashboard. You can develop the dashboard within the client side front-end project, or in a new project folder. Both ok.
+
+#### 2. Back-end and Database Development
+I would like to recommend to use Node.js with its framework Express.js to develop the Back-end. 
+In terms of database, MonggoDB is a good option due to its flexibility. I've already defined the database 
+schema in Front-end. It's in the root folder. This schema is just one solution (may not the best), just take
+it as an option.
+
+#### 3. API Implement in Front-end
+It's easy to use Restful API to communicate between Front-end and Back-end. Once Back-end and Database done,
+you need to implement the API request in Front-end/redux/ActionCreators.js file to replace the fake data. 
+
