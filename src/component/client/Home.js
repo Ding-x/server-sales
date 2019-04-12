@@ -23,7 +23,7 @@ class Home extends Component {
               <div>Here is our services</div>
               <Button className="request-btn" variant="success" href="#Services" >Request New Servers</Button>
               <br></br>
-              <Button className="request-btn" variant="success"  href="#Services">Update Servers</Button>
+              <Button className="request-btn" variant="success"  href="#">Update Servers</Button>
             </div>
 
          

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col,Button } from 'react-bootstrap'
-import "./Style.css"
+import "./Auth.css"
 
 class  Auth extends Component {
 
