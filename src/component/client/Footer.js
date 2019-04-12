@@ -1,3 +1,6 @@
+//This component is to render footer of the website.  
+
+
 import React, { Component } from 'react';
 
 class Header extends Component {

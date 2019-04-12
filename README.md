@@ -5,6 +5,7 @@ It was bootstrapped with [Create React App](https://github.com/facebook/create-r
 ##Technology Stack
 
 This proejtc was built with react, [react-router](https://reacttraining.com/react-router/), and [react-redux](https://react-redux.js.org/)
+We choose [react-bootstrap](https://react-bootstrap.github.io) as the UI framework.
 
 ## Available Scripts
 

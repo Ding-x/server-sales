@@ -1,3 +1,6 @@
+//This component is to render shopping cart page.
+
+
 import React, { Component } from 'react';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap'
 import "./ShoppingCart.css"

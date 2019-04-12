@@ -1,3 +1,7 @@
+/*
+Loader file of the whole project. Combined react-router react-redux with react.
+*/
+
 import React, { Component } from 'react';
 import Main from "./component/Main"
 import {HashRouter} from 'react-router-dom';

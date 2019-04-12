@@ -1,3 +1,5 @@
+//The file store attributes for Shopping cart objects with its changing when action types changed.
+
 import * as ActionTypes from './ActionTypes';
 
 export const Cart = (state = { 

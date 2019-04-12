@@ -1,3 +1,5 @@
+//data schema for fixedOptions. The fixed option means additional opption that is irrelated with final price.
+
 const fixedOptions = [
     {
         id:0,

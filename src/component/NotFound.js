@@ -1,3 +1,5 @@
+//This component is to render 404 not found page.
+
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
 

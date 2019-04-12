@@ -1,3 +1,6 @@
+//This component is to render additional options page. Clients are forced to choose their servers and server types here.
+
+
 import React, { Component } from 'react';
 import { Container, Row, Col, Modal, Button, Form } from 'react-bootstrap'
 import "./Addition.css"

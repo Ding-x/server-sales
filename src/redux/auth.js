@@ -1,5 +1,6 @@
-import * as ActionTypes from './ActionTypes';
+//The file store attributes for Auth objects with its changing when action types changed.
 
+import * as ActionTypes from './ActionTypes';
 
 export const Auth = (state = {
         isLoading: false,

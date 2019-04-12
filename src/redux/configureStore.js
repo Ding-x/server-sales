@@ -1,3 +1,5 @@
+//The file combined stores from multiple resources and applied middleware of redux for development.
+
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Products} from './products';
 import {Cart} from './cart';

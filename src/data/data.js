@@ -1,3 +1,5 @@
+//data schema for combo
+
 const comboList = [
     {
         id:1,

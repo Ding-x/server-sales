@@ -1,3 +1,6 @@
+//This component is to render services page.  
+
+
 import React, { Component } from 'react';
 import { Container, Button, Card, Row, Col, Modal } from 'react-bootstrap'
 import "./Services.css"

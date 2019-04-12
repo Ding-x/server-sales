@@ -1,3 +1,6 @@
+//This component is to render header navigation bar.  
+
+
 import React, { Component } from 'react';
 import {Navbar, Nav, Button} from 'react-bootstrap'
 

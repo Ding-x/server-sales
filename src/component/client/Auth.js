@@ -1,3 +1,6 @@
+//This component is to render login and register page.
+
+
 import React, { Component } from 'react';
 import { Container, Row, Col,Button } from 'react-bootstrap'
 import "./Auth.css"

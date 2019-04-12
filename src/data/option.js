@@ -1,3 +1,6 @@
+//data schema for options. The options means additional opption that is related with final price.
+
+
 const options = [
             {
                 id:1,

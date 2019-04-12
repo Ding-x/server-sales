@@ -1,3 +1,8 @@
+/*
+This file created bunch of actions to modify the data in stores. Later, we can call APIs from backend in this file.
+
+*/
+
 import * as ActionTypes from './ActionTypes';
 import comboList from '../data/data';
 import User from '../data/user';

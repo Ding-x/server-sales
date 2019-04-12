@@ -1,3 +1,5 @@
+//This component is to render customizing page.
+
 import React, { Component } from 'react';
 import {  Row, Col,Button, ButtonGroup, Form } from 'react-bootstrap'
 import "./Addition.css"

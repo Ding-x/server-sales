@@ -1,3 +1,5 @@
+//This component is to render shopping cart logo.  
+
 import React, { Component } from 'react';
 import "./SCLogo.css";
 

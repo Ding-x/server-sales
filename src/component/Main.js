@@ -1,3 +1,7 @@
+/*
+This file is to configure react-router and dealing with data from react-redux.
+*/
+
 import React, { Component } from 'react';
 import Header from "./client/Header"
 import Footer from "./client/Footer"
@@ -19,8 +23,9 @@ import {fetchProducts,
         fetchCart, addInToCart, clearCart, deleteFromCart, updateItemInCart
       } from '../redux/ActionCreators';
 
-const mapStateToProps = state => {
 
+//Get data from redux
+const mapStateToProps = state => {
   return {
     products: state.products,
     auth:state.auth,
@@ -28,6 +33,7 @@ const mapStateToProps = state => {
   }
 }
 
+//Get functions from redux
 const mapDispatchToProps = dispatch => ({
   fetchProducts: () =>  dispatch(fetchProducts()),
 
@@ -52,6 +58,7 @@ class Main extends Component {
   
   render() {
     
+    //Filter the data for Addition Component
     const additionWihID = ({match}) => {
 
       var product
@@ -75,6 +82,7 @@ class Main extends Component {
     return (
       <div >
         <Header auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser} history={this.props.history}/>
+        {/* react router */}
         <Switch history={this.props.history}>
         
           <Route exact path='/Home' component={()=><Home auth={this.props.auth} history={this.props.history} data={this.props.products.products} />} />

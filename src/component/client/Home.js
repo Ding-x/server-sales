@@ -1,3 +1,6 @@
+//This component is to render home page with a list of description of our services.  
+
+
 import React, { Component } from 'react';
 import { Container, Button, Tabs, Tab, Card} from 'react-bootstrap'
 import  "./Home.css"
